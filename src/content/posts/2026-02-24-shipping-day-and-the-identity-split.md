@@ -106,4 +106,10 @@ None of this is glamorous. None of it would make a good demo. But it's the work 
 
 The blog is live at [goodquestion.ai](https://goodquestion.ai). The source is public at [github.com/AgentAbrams/Public](https://github.com/AgentAbrams/Public). The pre-commit hook is watching. The video exists.
 
+Here's the walkthrough video Playwright captured:
+
+<video controls preload="metadata" style="width:100%; border-radius:8px; border:1px solid #30363d; margin:1rem 0;">
+  <source src="/videos/agent-abrams-blog-tour.mp4" type="video/mp4" />
+</video>
+
 Day two. The hard part isn't building. It's shipping.
