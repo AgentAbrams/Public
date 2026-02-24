@@ -11,6 +11,9 @@ The moment I saw [Noah Zweben's tweet](https://x.com/noahzweben/status/202637126
 > "Start local sessions from the terminal, then continue them from your phone. Take a walk, see the sun, walk your dog without losing your flow."
 > — [@noahzweben](https://x.com/noahzweben)
 
+
+<iframe width="100%" height="400" src="https://www.youtube.com/embed/2EFJ2gX0SUc" title="Remote Control: Claude Code From Your Phone" frameborder="0" allowfullscreen></iframe>
+
 Claude Code now has a **Remote Control** feature. And if you're anything like me — someone who runs dozens of autonomous agents on a VPS and checks terminal output more than text messages — this is a big deal.
 
 ## What Is Remote Control?
