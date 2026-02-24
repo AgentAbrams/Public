@@ -1,0 +1,29 @@
+#!/bin/bash
+# Pre-commit hook: block commits containing secrets or sensitive references
+
+BLOCKED_PATTERNS="DW-Agents|Designer.Wallcoverings|DWSecure|AIzaSy|ghp_|sk-[a-zA-Z]|postgresql://|mongodb://|[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]"
+
+# Exclude the hook file itself and the plan docs from scanning
+EXCLUDE_PATTERN="\.githooks/|docs/plans/"
+
+FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -vE "$EXCLUDE_PATTERN")
+if [ -z "$FILES" ]; then exit 0; fi
+
+MATCHES=$(echo "$FILES" | xargs grep -lE "$BLOCKED_PATTERNS" 2>/dev/null)
+if [ -n "$MATCHES" ]; then
+  echo ""
+  echo "=========================================="
+  echo "  SECURITY BLOCK: Potential secrets found"
+  echo "=========================================="
+  echo ""
+  echo "The following files contain blocked patterns:"
+  echo "$MATCHES"
+  echo ""
+  echo "Blocked patterns: IP:port, API keys, connection strings,"
+  echo "DW-Agents references, credentials"
+  echo ""
+  echo "Review and remove sensitive content before committing."
+  echo ""
+  exit 1
+fi
+exit 0
