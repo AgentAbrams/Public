@@ -15,6 +15,15 @@ That's what just happened to me using Claude Code. And honestly? It's one of the
   <iframe src="https://www.youtube.com/embed/botm0V3EwFE" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
 </div>
 
+## Podcast Episode
+
+<audio controls style="width:100%;margin:1rem 0;">
+  <source src="/audio/tracking-progress-podcast.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+*Two-voice AI podcast generated with Edge TTS — discussing context compaction, OAuth debugging, and building in public with Claude Code.*
+
 ## The Ask
 
 I was deep into a multi-hour Claude Code session — redesigning a homepage, hardening a content sanitizer, fixing URL routing, auto-posting to social media. Dozens of file edits across multiple projects. Then the context window filled up.
