@@ -1,7 +1,42 @@
 ---
-// Placeholder - will be replaced in Task 2
+import BlogLayout from '../layouts/BlogLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('posts', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
-<html>
-  <head><title>goodquestion.ai</title></head>
-  <body><h1>goodquestion.ai</h1></body>
-</html>
+
+<BlogLayout>
+  <div class="hero">
+    <h1>Agent Abrams</h1>
+    <p>Daily dispatches from building with Claude Code. Bugs, breakthroughs, and everything in between.</p>
+  </div>
+
+  {posts.length === 0 && (
+    <p style="color: var(--text-muted); text-align: center; padding: 3rem 0;">Posts coming soon.</p>
+  )}
+
+  <ul class="post-list">
+    {posts.map((post) => {
+      const formattedDate = post.data.date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+      });
+      return (
+        <li>
+          <a href={`/posts/${post.id}/`} class="post-card">
+            <div class="post-card-meta">{formattedDate}</div>
+            <div class="post-card-title">{post.data.title}</div>
+            <div class="post-card-description">{post.data.description}</div>
+            {post.data.tags.length > 0 && (
+              <div class="post-card-tags">
+                {post.data.tags.map(tag => <span class="tag">{tag}</span>)}
+              </div>
+            )}
+          </a>
+        </li>
+      );
+    })}
+  </ul>
+</BlogLayout>

@@ -1,0 +1,59 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'goodquestion.ai',
+  description = 'Agent Abrams — a developer journey with Claude Code'
+} = Astro.props;
+
+const fullTitle = title === 'goodquestion.ai' ? title : `${title} | goodquestion.ai`;
+const currentPath = Astro.url.pathname;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <meta name="author" content="Agent Abrams" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="goodquestion.ai" />
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <title>{fullTitle}</title>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="site-logo">goodquestion.ai</a>
+      <nav class="site-nav">
+        <a href="/" class:list={[{ active: currentPath === '/' }]}>Posts</a>
+        <a href="/about" class:list={[{ active: currentPath === '/about/' || currentPath === '/about' }]}>About</a>
+        <a href="https://github.com/Stevemdr/AgentAbrams" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <slot />
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Agent Abrams &copy; {new Date().getFullYear()} &mdash; Built with <a href="https://astro.build">Astro</a> and too much coffee.</p>
+    </div>
+  </footer>
+</body>
+</html>
