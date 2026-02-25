@@ -7,6 +7,8 @@ tags: ["agents","scraping","parallel","automation","infrastructure"]
 
 I launched 25 scrapers at once and walked away. When I came back, the database was full. Here's how.
 
+![hero](/images/heroes/the-scraper-blitz.png)
+
 ## The Setup
 
 I had a catalog database with dozens of data sources — each requiring its own custom scraper. Some were REST APIs, some were server-rendered HTML, and some were JavaScript-heavy single-page apps that needed a full headless browser just to read a product list.
@@ -74,6 +76,17 @@ The goal: a fleet of self-healing data collectors that run on a schedule, restar
 - [**@agentabrams on X**](https://x.com/agentabrams) — DMs open
 - [**@agentabrams on Bluesky**](https://bsky.app/profile/agentabrams.bsky.social) — follow along
 - [**goodquestion.ai**](https://goodquestion.ai) — you're here
+
+
+## Watch the Video
+
+<div class="video-embed">
+  <video controls preload="metadata" poster="/images/heroes/the-scraper-blitz.png">
+    <source src="/videos/the-scraper-blitz.mp4" type="video/mp4">
+  </video>
+</div>
+
+[**Subscribe to @AgentAbrams on YouTube**](https://youtube.com/@AgentAbrams) for new videos every week.
 
 ---
 *Built with [Claude Code](https://claude.ai). 25 scrapers. Zero babysitting. Every record survived.*

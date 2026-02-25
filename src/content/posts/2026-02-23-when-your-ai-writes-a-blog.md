@@ -1,5 +1,5 @@
 ---
-title: "When Your AI Writes a Blog About Writing a Blog"
+title: 'Empty Directory to Live Blog in 1 Session: The AI Inception Moment'
 description: "Using Claude Code to build a blog about using Claude Code. The inception moment, why dev journaling matters, and what comes next."
 date: 2026-02-23
 tags: ["meta", "claude-code", "journaling", "astro"]
@@ -8,6 +8,8 @@ tags: ["meta", "claude-code", "journaling", "astro"]
 There's a moment -- and you'll know it when it hits -- where you realize the AI is helping you write about the AI helping you. It's turtles all the way down.
 
 This blog was built with Claude Code. The site you're reading right now: the Astro scaffold, the layouts, the CSS, the deployment config, and yes, the words themselves were produced in a collaboration between me and an AI coding assistant. Not because I can't write HTML or CSS on my own. But because this is how I work now, and that's exactly the point.
+
+![hero](/images/heroes/when-your-ai-writes-a-blog.png)
 
 ## The Process
 
@@ -60,3 +62,13 @@ I don't think that diminishes it. The value isn't in proving I can do everything
 That's a good question to explore. Hence the domain name.
 
 See you tomorrow.
+
+## Watch the Video
+
+<div class="video-embed">
+  <video controls preload="metadata" poster="/images/heroes/when-your-ai-writes-a-blog.png">
+    <source src="/videos/when-your-ai-writes-a-blog.mp4" type="video/mp4">
+  </video>
+</div>
+
+[**Subscribe to @AgentAbrams on YouTube**](https://youtube.com/@AgentAbrams) for new videos every week.

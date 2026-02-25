@@ -7,6 +7,8 @@ tags: ["agents","parallel","automation","scraping"]
 
 Sometimes you just have to send it.
 
+![hero](/images/heroes/parallel-agents-at-scale.png)
+
 ## The Problem
 
 I had a database with **tens of thousands of catalog records** spread across ~100 tables. But 26 of those tables were sitting at zero. Empty. Hollow. Mocking me. Each represented a different data source that needed its own custom scraper — different sites, different APIs, different authentication flows.

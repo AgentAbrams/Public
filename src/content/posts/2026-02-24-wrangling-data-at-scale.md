@@ -1,5 +1,5 @@
 ---
-title: "Wrangling Data at Scale"
+title: 'From 0.01% to Full Coverage: Populating Thousands of Products in One Session'
 description: "the price agent `a price field` from an e-commerce platform = **sample price** ($X-$Y), NOT per unit retail price. Lessons learned building in production."
 date: 2026-02-24
 tags: ["api","oauth"]
@@ -12,7 +12,7 @@ Grabbed the keyboard at 6am. By noon, we had something real. Here's the story.
 
 The mission: **data pipeline**. Ship it to production, learn from the process, and share everything publicly — code, mistakes, and all.
 
-![data pipeline](/images/launch-meme.png)
+![hero](/images/heroes/wrangling-data-at-scale.png)
 
 ## What Was Achieved
 
@@ -66,6 +66,17 @@ Tomorrow's agenda (no promises, but here's the plan):
 - a majority of products (many) still missing costs — gaps: a vendor (hundreds), a product manufacturer remaining (hundreds), a commercial vendor (hundreds), a custom vendor (hundreds), a specialty supplier (hundreds), a textile house (hundreds)
 - Email attachment parsing for vendor price lists (found a product brand, a product brand, a fashion brand emails)
 - Google Drive spreadsheet import once re-authorized
+
+
+## Watch the Video
+
+<div class="video-embed">
+  <video controls preload="metadata" poster="/images/heroes/wrangling-data-at-scale.png">
+    <source src="/videos/wrangling-data-at-scale.mp4" type="video/mp4">
+  </video>
+</div>
+
+[**Subscribe to @AgentAbrams on YouTube**](https://youtube.com/@AgentAbrams) for new videos every week.
 
 ## Ask Me Anything
 

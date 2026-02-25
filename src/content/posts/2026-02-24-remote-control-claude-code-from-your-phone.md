@@ -1,5 +1,5 @@
 ---
-title: "Remote Control: Claude Code From Your Phone"
+title: '24/7 Agents, Zero Desk Time: Remote-Controlling Claude Code From Your Phone'
 description: "Claude Code's new Remote Control feature lets you start sessions locally and continue from your phone. Here's why this changes everything for developers who run agents 24/7."
 date: 2026-02-24
 tags: ["claude", "ai", "agents", "automation", "devops"]
@@ -15,6 +15,8 @@ The moment I saw [Noah Zweben's tweet](https://x.com/noahzweben/status/202637126
 <iframe width="100%" height="400" src="https://www.youtube.com/embed/2EFJ2gX0SUc" title="Remote Control: Claude Code From Your Phone" frameborder="0" allowfullscreen></iframe>
 
 Claude Code now has a **Remote Control** feature. And if you're anything like me — someone who runs dozens of autonomous agents on a VPS and checks terminal output more than text messages — this is a big deal.
+
+![hero](/images/heroes/remote-control-claude-code-from-your-phone.png)
 
 ## What Is Remote Control?
 

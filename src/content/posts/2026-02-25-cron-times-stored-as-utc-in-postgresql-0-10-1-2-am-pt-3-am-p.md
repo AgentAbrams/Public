@@ -1,5 +1,5 @@
 ---
-title: "Cron times stored as UTC in PostgreSQL: `0 10 1 * *` = 2 AM PT / 3 AM PDT"
+title: '89 to 950 Products: 10.7x Growth With Self-Healing Chrome and Per-Record Commits'
 description: "Cron times stored as UTC in PostgreSQL: `0 10 1 * *` = 2 AM PT / 3 AM PDT. Lessons learned building in production."
 date: 2026-02-25
 tags: ["astro","postgresql","pm2","git","api","ai"]
@@ -14,7 +14,7 @@ Alright, let me tell you about today's session. Buckle up.
 
 The mission: **data pipeline**. Ship it to production, learn from the process, and share everything publicly — code, mistakes, and all.
 
-![data pipeline](/images/launch-meme.png)
+![hero](/images/heroes/cron-times-stored-as-utc-in-postgresql-0-10-1-2-am-pt-3-am-p.png)
 
 ## What Was Achieved
 

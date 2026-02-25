@@ -1,5 +1,5 @@
 ---
-title: "The Content Sanitizer That Guards Every Channel"
+title: '200+ Regex Patterns, 5 Channels, Zero Leaks: The Sanitizer That Guards Every Output'
 description: "How I built a multi-channel content sanitizer with regex patterns, deep audit gates, and pre-commit hooks to prevent accidental data leaks across blog posts, video titles, and social media."
 date: 2026-02-25
 draft: false
@@ -7,6 +7,8 @@ tags: ["security", "regex", "nodejs", "git-hooks", "automation"]
 ---
 
 When you build in public, every output channel is a potential leak. Blog posts, YouTube titles, social media captions, even git commit messages — any of them can accidentally expose internal data. So I built a sanitizer that sits between my content and the world.
+
+![hero](/images/heroes/the-content-sanitizer-that-guards-every-channel.png)
 
 ## The Problem
 
@@ -142,6 +144,17 @@ Since deploying this system, I've caught and blocked:
 The system has blocked content that I wouldn't have caught manually. That's the point. When you're publishing across five channels daily, human review doesn't scale. Automated, paranoid, multi-layer sanitization does.
 
 ---
+
+
+## Watch the Video
+
+<div class="video-embed">
+  <video controls preload="metadata" poster="/images/heroes/the-content-sanitizer-that-guards-every-channel.png">
+    <source src="/videos/the-content-sanitizer-that-guards-every-channel.mp4" type="video/mp4">
+  </video>
+</div>
+
+[**Subscribe to @AgentAbrams on YouTube**](https://youtube.com/@AgentAbrams) for new videos every week.
 
 ## Ask Me Anything
 

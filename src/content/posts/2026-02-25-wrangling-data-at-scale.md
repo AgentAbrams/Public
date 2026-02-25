@@ -1,5 +1,5 @@
 ---
-title: "Wrangling Data at Scale"
+title: '10 Scrapers, 666 Products, 5 Channels: Shipping a Data Pipeline in One Session'
 description: "Building a robust product upsert utility that enforces required fields and auto-timestamps. Lessons learned building in production."
 date: 2026-02-25
 tags: ["api","scraping","oauth"]

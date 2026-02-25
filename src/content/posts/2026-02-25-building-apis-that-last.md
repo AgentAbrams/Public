@@ -1,5 +1,5 @@
 ---
-title: "Building APIs That Last"
+title: '10x Catalog Growth in 2 Hours: Self-Healing Scrapers That Survive Chrome Crashes'
 description: "Practical API development lessons from a day of building in production."
 date: 2026-02-25
 tags: ["pm2","api","scraping"]
@@ -14,7 +14,7 @@ Today I shipped something I'm actually proud of. Let me show you.
 
 The mission: **API development**. Ship it to production, learn from the process, and share everything publicly — code, mistakes, and all.
 
-![API development](/images/launch-meme.png)
+![hero](/images/heroes/building-apis-that-last.png)
 
 ## What Was Achieved
 

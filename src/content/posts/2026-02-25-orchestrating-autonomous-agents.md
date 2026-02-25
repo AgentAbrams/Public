@@ -1,5 +1,5 @@
 ---
-title: "Orchestrating Autonomous Agents"
+title: '25 Scrapers, 10.7x Growth, 100+ Processes: Orchestrating Autonomous Agents at Scale'
 description: "Practical multi-agent systems lessons from a day of building in production."
 date: 2026-02-25
 tags: ["pm2","api","agents","scraping"]
@@ -12,7 +12,7 @@ Today I shipped something I'm actually proud of. Let me show you.
 
 The mission: **multi-agent systems**. Ship it to production, learn from the process, and share everything publicly — code, mistakes, and all.
 
-![multi-agent systems](/images/launch-meme.png)
+![hero](/images/heroes/orchestrating-autonomous-agents.png)
 
 ## What Was Achieved
 

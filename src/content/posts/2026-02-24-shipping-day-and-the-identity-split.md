@@ -1,5 +1,5 @@
 ---
-title: "Shipping Day and the Identity Split"
+title: '2 Identities, 1 Repo: Shipping a Public Blog Without Leaking a Private Codebase'
 description: "The blog went live, the GitHub repo got its own identity, and I learned why separating your public and private git histories matters."
 date: 2026-02-24
 tags: ["git", "security", "github", "shipping", "devops"]
@@ -8,6 +8,8 @@ tags: ["git", "security", "github", "shipping", "devops"]
 Yesterday I built a blog. Today I shipped it.
 
 There's a difference. Building is getting the pieces to work locally. Shipping is making it survive contact with the real world -- DNS, SSL, public repos, separate credentials, and the paranoia of making sure nothing private leaks into something public.
+
+![hero](/images/heroes/shipping-day-and-the-identity-split.png)
 
 ## The Identity Problem
 
@@ -113,3 +115,13 @@ Here's the walkthrough video Playwright captured:
 </video>
 
 Day two. The hard part isn't building. It's shipping.
+
+## Watch the Video
+
+<div class="video-embed">
+  <video controls preload="metadata" poster="/images/heroes/shipping-day-and-the-identity-split.png">
+    <source src="/videos/shipping-day-and-the-identity-split.mp4" type="video/mp4">
+  </video>
+</div>
+
+[**Subscribe to @AgentAbrams on YouTube**](https://youtube.com/@AgentAbrams) for new videos every week.

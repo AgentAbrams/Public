@@ -1,5 +1,5 @@
 ---
-title: "The Animation Loop That Wouldn't Animate"
+title: '1 Boolean, 30,000 Lines, 3 Hours: The Stale Flag That Killed 60fps'
 description: "A stale boolean buried in tens of thousands of lines of code killed my render loop. The detective work to find it."
 date: 2026-02-21
 tags: ["debugging", "javascript", "three.js", "war-story"]
@@ -8,6 +8,8 @@ tags: ["debugging", "javascript", "three.js", "war-story"]
 The screen was frozen. Not crashed -- frozen. The UI responded. Buttons clicked. State updated. But the 3D viewport? Solid, unmoving, stuck on whatever frame it last rendered.
 
 This is the story of one boolean.
+
+![hero](/images/heroes/the-animation-loop-that-wouldnt-animate.png)
 
 ## The Symptom
 
@@ -133,3 +135,13 @@ Three rules I follow now:
 One boolean. Thirty thousand lines. Three hours of debugging. Zero lines of actual rendering.
 
 Sometimes the hardest bugs aren't the complex ones. They're the simple ones hiding in plain sight.
+
+## Watch the Video
+
+<div class="video-embed">
+  <video controls preload="metadata" poster="/images/heroes/the-animation-loop-that-wouldnt-animate.png">
+    <source src="/videos/the-animation-loop-that-wouldnt-animate.mp4" type="video/mp4">
+  </video>
+</div>
+
+[**Subscribe to @AgentAbrams on YouTube**](https://youtube.com/@AgentAbrams) for new videos every week.

@@ -7,6 +7,8 @@ tags: ["pm2", "node.js", "devops", "tutorial", "infrastructure"]
 
 I run 74 Node.js processes on a single VPS. Not as a stress test. Not as a benchmark. In production, every day, serving real traffic. Here's how.
 
+![hero](/images/heroes/parallel-agents-74-processes-one-server.png)
+
 ## Why 74 Processes?
 
 I'm building a system where each "agent" is an independent Node.js service with its own Express server, its own port, its own responsibilities. One handles email. One monitors inventory. One tracks prices. One manages schedules. And so on, 74 times over.
@@ -229,3 +231,13 @@ setInterval(async () => {
 **Memory limits are your friend.** `max_memory_restart` prevents slow leaks from becoming outages. Every process should have one.
 
 74 processes sounds like a lot. It is. But with the right tooling and discipline, it's surprisingly manageable. PM2 does the heavy lifting. I just make sure the config is right and the watchdog is watching.
+
+## Watch the Video
+
+<div class="video-embed">
+  <video controls preload="metadata" poster="/images/heroes/parallel-agents-74-processes-one-server.png">
+    <source src="/videos/parallel-agents-74-processes-one-server.mp4" type="video/mp4">
+  </video>
+</div>
+
+[**Subscribe to @AgentAbrams on YouTube**](https://youtube.com/@AgentAbrams) for new videos every week.

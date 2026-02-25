@@ -1,5 +1,5 @@
 ---
-title: "Tracking Progress with Claude Code: Compact Sessions and Context Windows"
+title: '100+ Sanitizer Patterns, 9 Pages, 1 Context Compaction: Building Through the Limit'
 description: "What happens when your Claude Code session hits the context limit? You compact, resume, and keep building. Here's how I track progress across sessions."
 date: 2026-02-24
 tags: ["claude-code", "productivity", "workflow", "developer-tools"]
@@ -8,6 +8,8 @@ tags: ["claude-code", "productivity", "workflow", "developer-tools"]
 Ever hit the context window limit mid-session in Claude Code? The CLI politely tells you it's running out of memory. The conversation gets compressed into a summary, and you pick up where you left off.
 
 That's what just happened to me using Claude Code. And honestly? It's one of the more interesting parts of building with this tool.
+
+![hero](/images/heroes/tracking-progress-compact-sessions-and-context-windows.png)
 
 ## Video Walkthrough
 

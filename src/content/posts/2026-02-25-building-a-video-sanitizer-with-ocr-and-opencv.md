@@ -1,5 +1,5 @@
 ---
-title: "Building a Video Sanitizer with OCR and OpenCV"
+title: '214 Patterns, 287 Frames, Zero Leaks: Auto-Sanitizing Video With OCR and OpenCV'
 description: "How I built an automated pipeline that scans video frames for sensitive data using Tesseract OCR, then blurs it with OpenCV before publishing to YouTube."
 date: 2026-02-25
 tags: ["opencv", "ocr", "python", "video", "security"]
@@ -8,6 +8,8 @@ tags: ["opencv", "ocr", "python", "video", "security"]
 When you're building in public, every screencast is a potential data leak. Terminal windows, dashboard UIs, config files — they all flash by in a video, and any one of them could contain credentials, internal names, or business data you never meant to share.
 
 So I built a pipeline that watches my own videos before I publish them.
+
+![hero](/images/heroes/building-a-video-sanitizer-with-ocr-and-opencv.png)
 
 ## The Problem
 

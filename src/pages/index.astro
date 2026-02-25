@@ -4,6 +4,20 @@ import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('posts', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+/** Extract the first YouTube video ID from a post's markdown body */
+function extractYouTubeId(body: string | undefined): string | null {
+  if (!body) return null;
+  const match = body.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|watch\?v=))([a-zA-Z0-9_-]{11})/);
+  return match ? match[1] : null;
+}
+
+/** Extract native video path from a post's markdown body */
+function extractNativeVideo(body: string | undefined): string | null {
+  if (!body) return null;
+  const match = body.match(/src="(\/videos\/[^"]+\.mp4)"/);
+  return match ? match[1] : null;
+}
 ---
 
 <BlogLayout>
@@ -32,16 +46,6 @@ const posts = (await getCollection('posts', ({ data }) => !data.draft))
     </div>
   </div>
 
-  <!-- Video -->
-  <div class="video-section">
-    <h2>Blog Tour</h2>
-    <div class="video-wrapper">
-      <div class="youtube-embed">
-        <iframe src="https://www.youtube.com/embed/iy9K0VJ74YU" title="Agent Abrams Blog Tour" allowfullscreen loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-
   <!-- Posts -->
   <h2 class="section-heading">Latest Posts</h2>
 
@@ -56,18 +60,40 @@ const posts = (await getCollection('posts', ({ data }) => !data.draft))
         month: 'short',
         day: 'numeric',
       });
+      const slug = post.id.replace(/^\d{4}-\d{2}-\d{2}-/, '');
+      const heroImage = `/images/heroes/${slug}.png`;
+      const videoId = extractYouTubeId(post.body);
+      const nativeVideo = extractNativeVideo(post.body);
       return (
         <li>
-          <a href={`/posts/${post.id.replace(/^\d{4}-\d{2}-\d{2}-/, '')}/`} class="post-card">
-            <div class="post-card-meta">{formattedDate}</div>
-            <div class="post-card-title">{post.data.title}</div>
-            <div class="post-card-description">{post.data.description}</div>
-            {post.data.tags.length > 0 && (
-              <div class="post-card-tags">
-                {post.data.tags.map(tag => <span class="tag">{tag}</span>)}
-              </div>
-            )}
+          <a href={`/posts/${slug}/`} class="post-card">
+            <div class="post-card-thumb">
+              <img src={heroImage} alt={post.data.title} loading="lazy" onerror="this.parentElement.style.display='none'" />
+            </div>
+            <div class="post-card-content">
+              <div class="post-card-meta">{formattedDate}</div>
+              <div class="post-card-title">{post.data.title}</div>
+              <div class="post-card-description">{post.data.description}</div>
+              {post.data.tags.length > 0 && (
+                <div class="post-card-tags">
+                  {post.data.tags.map(tag => <span class="tag">{tag}</span>)}
+                </div>
+              )}
+            </div>
           </a>
+          {nativeVideo ? (
+            <div class="post-video">
+              <video controls preload="metadata" poster={heroImage}>
+                <source src={nativeVideo} type="video/mp4" />
+              </video>
+            </div>
+          ) : videoId ? (
+            <div class="post-video">
+              <div class="youtube-embed">
+                <iframe src={`https://www.youtube.com/embed/${videoId}`} title={post.data.title} allowfullscreen loading="lazy"></iframe>
+              </div>
+            </div>
+          ) : null}
         </li>
       );
     })}
@@ -184,6 +210,63 @@ const posts = (await getCollection('posts', ({ data }) => !data.draft))
   }
   .btn-youtube:hover { border-color: #ff0000; background: rgba(255,0,0,0.1); color: #ff0000; }
 
+  /* Post Card with Thumbnail */
+  .post-card {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+  }
+  .post-card-thumb {
+    flex-shrink: 0;
+    width: 200px;
+    height: 112px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--bg-secondary);
+  }
+  .post-card-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+  .post-card:hover .post-card-thumb img {
+    transform: scale(1.05);
+  }
+  .post-card-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  /* Post Video Embed */
+  .post-video {
+    margin-top: 0.75rem;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .youtube-embed {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    overflow: hidden;
+  }
+  .youtube-embed iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  .post-video video {
+    width: 100%;
+    max-height: 400px;
+    background: #000;
+    display: block;
+  }
+
   /* Section Heading */
   .section-heading {
     font-size: 1.3rem;
@@ -264,5 +347,7 @@ const posts = (await getCollection('posts', ({ data }) => !data.draft))
     .hero-cta { justify-content: center; }
     .hero-title { font-size: 2.2rem; }
     .contact-grid { grid-template-columns: repeat(2, 1fr); }
+    .post-card { flex-direction: column; }
+    .post-card-thumb { width: 100%; height: 180px; }
   }
 </style>

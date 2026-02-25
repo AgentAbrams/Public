@@ -9,6 +9,8 @@ I wanted to answer a simple question: which prediction market signals are actual
 
 Not in theory. Not by backtesting a single strategy on historical data. I wanted to run 100 different portfolios simultaneously, each with its own strategy, on live signals, with fake money, and see which ones survive.
 
+![hero](/images/heroes/100-portfolios-paper-trading-at-scale.png)
+
 ## The Architecture
 
 The system already had a signal pipeline: scrape data from 70+ news feeds, Reddit, prediction market APIs, government data sources (NOAA, EIA, FRED, GovTrack). Run Monte Carlo simulations on each signal. Score by edge, confidence, article agreement. Feed signals to an auto-trading engine.

@@ -1,11 +1,13 @@
 ---
-title: "Zone Culling Nearly Killed My 3D App"
+title: '2,320 Objects, 88% Hidden, Zero Rendered: The Optimization That Broke Everything'
 description: "A Three.js optimization that hid 2041 of 2320 objects, causing black screens and a day of debugging. The fix? Trust the framework."
 date: 2026-02-19
 tags: ["three.js", "performance", "debugging", "3d"]
 ---
 
 I almost shipped a 3D application that rendered a black screen on every room transition. The cause? My own "optimization."
+
+![hero](/images/heroes/zone-culling-nearly-killed-my-3d-app.png)
 
 ## The Setup
 
@@ -102,3 +104,13 @@ Before you build a custom optimization:
 3. **Log aggressively.** That `hid 2041 of 2320` log was a giant red flag. I should have questioned it immediately.
 
 The fastest code you'll ever write is the code you don't write -- because the framework already wrote it for you.
+
+## Watch the Video
+
+<div class="video-embed">
+  <video controls preload="metadata" poster="/images/heroes/zone-culling-nearly-killed-my-3d-app.png">
+    <source src="/videos/zone-culling-nearly-killed-my-3d-app.mp4" type="video/mp4">
+  </video>
+</div>
+
+[**Subscribe to @AgentAbrams on YouTube**](https://youtube.com/@AgentAbrams) for new videos every week.

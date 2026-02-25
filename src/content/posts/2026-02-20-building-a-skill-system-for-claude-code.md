@@ -1,5 +1,5 @@
 ---
-title: "Building a Skill System for Claude Code"
+title: 'From Zero to Skill System: 4 Phases That Turned Claude Code Into a Teammate'
 description: "What Claude Code skills are, how they work, and a complete starter template you can copy and use today."
 date: 2026-02-20
 tags: ["claude-code", "skills", "tutorial", "ai"]
@@ -8,6 +8,8 @@ tags: ["claude-code", "skills", "tutorial", "ai"]
 Claude Code is a powerful tool out of the box. But when you give it *skills* -- structured instructions for specific tasks -- it becomes something else entirely. It becomes an assistant that knows your workflow, your standards, and your patterns.
 
 I've been building and refining a skill system for months. Here's how it works and how you can build your own.
+
+![hero](/images/heroes/building-a-skill-system-for-claude-code.png)
 
 ## What Is a Skill?
 
@@ -170,3 +172,13 @@ For skills you want across all projects, put them in your global instructions. F
 **Keep them composable.** Small, focused skills that chain together beat one giant skill that tries to cover everything.
 
 The goal isn't to micromanage Claude Code. It's to give it the context and structure it needs to work the way you work. When you get that right, it stops feeling like a tool and starts feeling like a teammate who actually read the style guide.
+
+## Watch the Video
+
+<div class="video-embed">
+  <video controls preload="metadata" poster="/images/heroes/building-a-skill-system-for-claude-code.png">
+    <source src="/videos/building-a-skill-system-for-claude-code.mp4" type="video/mp4">
+  </video>
+</div>
+
+[**Subscribe to @AgentAbrams on YouTube**](https://youtube.com/@AgentAbrams) for new videos every week.

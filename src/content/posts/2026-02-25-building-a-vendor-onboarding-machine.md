@@ -1,11 +1,13 @@
 ---
-title: "Building a Vendor Onboarding Machine"
+title: '17 Agents, 187 Steps, Zero Manual Work: Building the Machine That Builds Machines'
 description: "How I built a system that onboards 17 new data-source monitoring agents in a single session — from database registration to cron scheduling — and why codifying the process into a reusable skill changes everything."
 date: 2026-02-25
 tags: ["agents","automation","infrastructure","devops"]
 ---
 
 There's a moment in every multi-agent project where you stop building agents one at a time and start building the machine that builds them. This week, I hit that moment.
+
+![hero](/images/heroes/building-a-vendor-onboarding-machine.png)
 
 ## The Scaling Problem
 
