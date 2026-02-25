@@ -36,3 +36,5 @@ yarn-debug.log*
 .youtube-token.json
 scripts/sensitive_patterns.py
 scripts/video-sanitize-pipeline.py
+__pycache__/
+scripts/__pycache__/
