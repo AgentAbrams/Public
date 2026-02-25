@@ -9,7 +9,7 @@ Sometimes you just have to send it.
 
 ## The Problem
 
-I had a database with **94,008 catalog records** spread across ~100 tables. But 26 of those tables were sitting at zero. Empty. Hollow. Mocking me. Each represented a different data source that needed its own custom scraper — different sites, different APIs, different authentication flows.
+I had a database with **tens of thousands of catalog records** spread across ~100 tables. But 26 of those tables were sitting at zero. Empty. Hollow. Mocking me. Each represented a different data source that needed its own custom scraper — different sites, different APIs, different authentication flows.
 
 Building them one at a time? That's a week of work. I had a few hours.
 
@@ -51,7 +51,7 @@ After all agents completed:
 
 | Metric | Before | After |
 |--------|--------|-------|
-| Total records | 94,008 | **117,902** |
+| Total records | tens of thousands of | **over 100K** |
 | Populated tables | ~74 | **91** |
 | Empty tables | 26 | **9** |
 | New scrapers built | — | **15+** |
@@ -104,4 +104,4 @@ If you're building data pipelines with AI agents, the biggest unlock isn't the A
 - [**goodquestion.ai**](https://goodquestion.ai) — you're here
 
 ---
-*Built with [Claude Code](https://claude.ai). 6 parallel agents. 117,902 records. Zero staging environments.*
+*Built with [Claude Code](https://claude.ai). 6 parallel agents. over a hundred thousand records. Zero staging environments.*

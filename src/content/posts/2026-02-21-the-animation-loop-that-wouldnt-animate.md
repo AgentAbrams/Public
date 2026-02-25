@@ -1,6 +1,6 @@
 ---
 title: "The Animation Loop That Wouldn't Animate"
-description: "A stale boolean buried in 30,000 lines of code killed my render loop. The detective work to find it."
+description: "A stale boolean buried in tens of thousands of lines of code killed my render loop. The detective work to find it."
 date: 2026-02-21
 tags: ["debugging", "javascript", "three.js", "war-story"]
 ---
@@ -44,7 +44,7 @@ Always true. On every frame. The guard clause was skipping `controls.update()` a
 
 ## The Search
 
-Now I needed to find where `_active` was being set to `true` and never cleared. In a 30,000-line codebase across dozens of files.
+Now I needed to find where `_active` was being set to `true` and never cleared. In a large codebase across dozens of files.
 
 The variable was declared at module scope:
 

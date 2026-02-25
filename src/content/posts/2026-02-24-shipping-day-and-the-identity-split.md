@@ -19,13 +19,13 @@ The solution was straightforward:
 
 ```bash
 # Add a second remote with its own credentials
-git remote add public https://x-access-token:TOKEN@github.com/PublicAccount/Repo.git
+git remote add public https://github.com/PublicAccount/Repo.git
 
 # Push to the public remote
 git push public main
 ```
 
-The `x-access-token` pattern lets you embed a Personal Access Token directly in the remote URL. It's the same mechanism CI/CD systems use. Your default `gh` CLI stays authenticated as your private account, but pushes to the public repo use the separate token.
+The token-based remote URL pattern lets you embed a Personal Access Token for authentication. It's the same mechanism CI/CD systems use. Your default `gh` CLI stays authenticated as your private account, but pushes to the public repo use the separate token.
 
 ## The Security Audit
 

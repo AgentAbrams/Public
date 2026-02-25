@@ -22,10 +22,10 @@ Here's the full rundown:
 
 - **A boutique brand COMPLETE**: 89 → 950 products (10.7x growth, 1h40m runtime). BrowserManager v2 survived multiple Chrome restarts autonomously.
 - **HTTP Scraper v2**: Wrote HTTP-only scraper replacing Puppeteer one that timed out. 80 → 464 products (5.8x growth). Fetches 16 listing pages + 384 detail pages, extracts brand/collection from breadcrumbs.
-- **Algolia API scraper**: 142 → 429 products (3x growth) by reverse-engineering a vendor's search API.
-- **Mass Scraper Blitz**: Ran 25+ scrapers in parallel. Key refreshes across 7 major vendors — largest single catalog hit 5,012 products.
+- **search API scraper**: 142 → 429 products (3x growth) by reverse-engineering a vendor's search API.
+- **Mass Scraper Blitz**: Ran 25+ scrapers in parallel. Key refreshes across 7 major vendors — largest single catalog hit thousands of products.
 - **Surprise Growers**: Two vendors grew 5.1x and 4.1x respectively — both grew massively despite timeout kills because upserts committed individually.
-- **Final Stats**: 252,218 products across 96 catalogs. 106 PM2 processes online.
+- **Final Stats**: hundreds of thousands of products across dozens of catalogs. over a hundred PM2 processes online.
 - HTTP-only scrapers beat Puppeteer when sites render server-side: 5min vs infinite timeout.
 - Scrapers that upsert per-product (not batched) survive timeout SIGTERM — data persists even if process killed.
 

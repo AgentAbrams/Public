@@ -1,6 +1,6 @@
 ---
 title: "Wrangling Data at Scale"
-description: "`scraper-utils.js` `upsertProduct()` requires `mfr_sku` field (not vendor_sku) and auto-appends `last_scraped=NOW()`. Lessons learned building in production."
+description: "Building a robust product upsert utility that enforces required fields and auto-timestamps. Lessons learned building in production."
 date: 2026-02-25
 tags: ["api","scraping","oauth"]
 ---
@@ -21,9 +21,9 @@ The headline: **Bluesky integration: Created `scripts/bsky-post.cjs` using `@atp
 Here's the full rundown:
 
 - **Bluesky integration**: Created `scripts/bsky-post.cjs` using `@atproto/api`, posted 2 Bluesky posts
-- **YouTube walkthrough video**: Captured 5 dashboard screenshots with Playwright, assembled into 25s video with ffmpeg text overlays, uploaded to YouTube: https://www.youtube.com/watch?v=5un2PCEhtmw
-- **Vendor scraper rebuilt**: Fixed corrupted file (truncated + `\!` syntax error), fixed column mismatch (`vendor_sku` → `mfr_sku`), fixed `last_scraped` duplicate assignment → **666 products cataloged**
-- **Catalog total**: 93,709 (up from 92,289, +1,420)
+- **YouTube walkthrough video**: Captured 5 dashboard screenshots with Playwright, assembled into 25s video with ffmpeg text overlays, uploaded to YouTube
+- **Vendor scraper rebuilt**: Fixed corrupted file (truncated + `\!` syntax error), fixed column mismatch in the SKU field, fixed timestamp duplicate assignment → **666 products cataloged**
+- **Catalog total**: tens of thousands (growing steadily)
 - **Ran 10 scrapers**: One vendor (666 products), one blocked by API, one portal offline, four Puppeteer SPA timeouts, two general timeouts
 - **Twitter still rate-limited**: 429 from previous session, need to wait
 
@@ -31,7 +31,7 @@ Here's the full rundown:
 
 Here's what caught my attention:
 
-> `scraper-utils.js` `upsertProduct()` requires `mfr_sku` field (not vendor_sku) and auto-appends `last_scraped=NOW()` — don't pass it in product object
+> The `upsertProduct()` utility requires a specific SKU identifier field and auto-appends timestamps — don't pass timestamps in the product object or you'll get duplicate column errors
 
 This matters because it's the kind of thing you only learn by building in production. No tutorial teaches you this.
 

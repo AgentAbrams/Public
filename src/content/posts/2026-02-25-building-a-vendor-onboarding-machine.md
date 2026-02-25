@@ -80,7 +80,7 @@ After generating all 17 agents, I ran a verification sweep — a simple loop tha
 const results = await Promise.all(
   newAgents.map(async (agent) => {
     try {
-      const res = await fetch(`http://127.0.0.1:${agent.port}/health`);
+      const res = await fetch(`http://localhost/health`);
       return { name: agent.name, status: res.status, ok: res.ok };
     } catch (e) {
       return { name: agent.name, status: 'UNREACHABLE', ok: false };
