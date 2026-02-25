@@ -1,0 +1,5 @@
+file 'narr-01-intro.mp3'
+file 'narr-02-dashboard.mp3'
+file 'narr-03-agents.mp3'
+file 'narr-04-results.mp3'
+file 'narr-05-outro.mp3'
