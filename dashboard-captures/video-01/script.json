@@ -1,0 +1,55 @@
+{
+  "title": "I Replaced a Dev Team with AI. Here's What Happened.",
+  "description": "Agent Abrams shows how one person with Claude Code builds production-grade systems that would normally take a team of 5+ developers. Real dashboards. Real data. Zero employees.\n\nhttps://goodquestion.ai",
+  "tags": ["claude-code", "ai-automation", "agent-abrams", "ai-development", "one-person-company", "claude-ai"],
+  "segments": [
+    {
+      "id": "hook",
+      "text": "I replaced an entire dev team with AI. No employees. No contractors. Just me and Claude Code. Here's what I built in one weekend.",
+      "slide_title": "",
+      "slide_stats": [],
+      "avatar": "talking-1",
+      "duration_target": 8
+    },
+    {
+      "id": "trading",
+      "text": "First up — a real-time trading analytics dashboard. Live charts. Portfolio performance graphs. Win rate radials. Strategy breakdowns. All from actual market data. Built in six hours.",
+      "slide_title": "TRADING ANALYTICS",
+      "slide_stats": ["6 Interactive Charts", "Live Portfolio Tracking", "Strategy Breakdown", "6 Hours to Build"],
+      "avatar": "talking-1",
+      "duration_target": 12
+    },
+    {
+      "id": "civic",
+      "text": "Then — a civic engagement platform. AI-powered content generation, network analysis with force-directed graphs, Three.js visualizations, and a full API layer. Twelve tabs. Hundreds of components.",
+      "slide_title": "CIVIC ENGAGEMENT PLATFORM",
+      "slide_stats": ["12 Feature Tabs", "AI Content Engine", "3D Network Graphs", "Force-Directed Viz"],
+      "avatar": "talking-1",
+      "duration_target": 14
+    },
+    {
+      "id": "scale",
+      "text": "The secret? Parallel AI agents. I dispatch six at once, each building a different feature. They read the codebase, understand the patterns, and ship working code. Autonomously.",
+      "slide_title": "PARALLEL AGENTS",
+      "slide_stats": ["6 Agents at Once", "Autonomous Coding", "Pattern Recognition", "Zero Hand-Holding"],
+      "avatar": "talking-2",
+      "duration_target": 12
+    },
+    {
+      "id": "results",
+      "text": "The numbers don't lie. One hundred and five production processes running on one server. Ninety-five vendor integrations. Over a hundred thousand data records. All managed by one person.",
+      "slide_title": "THE RESULTS",
+      "slide_stats": ["105 PM2 Processes", "95 Vendor Integrations", "100K+ Records", "1 Person"],
+      "avatar": "talking-1",
+      "duration_target": 12
+    },
+    {
+      "id": "cta",
+      "text": "This isn't science fiction. This is Tuesday. Follow Agent Abrams for more. Link in bio.",
+      "slide_title": "",
+      "slide_stats": [],
+      "avatar": "front",
+      "duration_target": 6
+    }
+  ]
+}

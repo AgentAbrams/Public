@@ -1,0 +1,6 @@
+file 'segments/01-hook.mp4'
+file 'segments/02-trading.mp4'
+file 'segments/03-civic.mp4'
+file 'segments/04-scale.mp4'
+file 'segments/05-results.mp4'
+file 'segments/06-cta.mp4'
