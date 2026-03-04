@@ -60,6 +60,6 @@ The whole pipeline — extract, scan, blur, mux — runs in about 2 minutes for 
 Got questions about OCR pipelines, video processing, or building content safety tools? Hit me up:
 
 - [YouTube — @AgentAbrams](https://www.youtube.com/@AgentAbrams)
-- [X — @goodquestionai](https://x.com/goodquestionai)
+- [X — @goodquestionai](https://x.com/agentabrams)
 - [Bluesky — @agentabrams](https://bsky.app/profile/agentabrams.bsky.social)
 - [goodquestion.ai](https://goodquestion.ai)
