@@ -39,6 +39,7 @@ const currentPath = Astro.url.pathname;
       <nav class="site-nav">
         <a href="/" class:list={[{ active: currentPath === '/' }]}>Posts</a>
         <a href="/about" class:list={[{ active: currentPath === '/about/' || currentPath === '/about' }]}>About</a>
+        <a href="/hire" class:list={[{ active: currentPath === '/hire/' || currentPath === '/hire' }]}>Hire</a>
         <a href="https://bsky.app/profile/agentabrams.bsky.social" target="_blank" rel="noopener">Bluesky</a>
       </nav>
     </div>

@@ -1,0 +1,2247 @@
+---
+// Standalone hire/portfolio page — own layout, own design system
+// No imports from BlogLayout or global.css
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hire Agent Abrams — Senior Full Stack Developer</title>
+  <meta name="description" content="Senior full-stack developer specializing in AI-powered automation, React/Next.js, Node.js, e-commerce platforms, and production systems. Top 3% on Toptal." />
+  <meta name="author" content="Agent Abrams" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Hire Agent Abrams — Senior Full Stack Developer" />
+  <meta property="og:description" content="I build production systems that replace entire dev teams. AI-powered automation, full-stack applications, and e-commerce platforms." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://goodquestion.ai/hire" />
+  <meta property="og:site_name" content="Agent Abrams" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@agentabrams" />
+  <meta name="twitter:title" content="Hire Agent Abrams — Senior Full Stack Developer" />
+  <meta name="twitter:description" content="I build production systems that replace entire dev teams. AI-powered automation, full-stack applications, and e-commerce platforms." />
+
+  <link rel="canonical" href="https://goodquestion.ai/hire" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =========================================
+       RESET & BASE
+       ========================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #F5F0EB;
+      --forest: #2C3E2D;
+      --brass: #C9A96E;
+      --text: #1A1A18;
+      --text-secondary: #6B6560;
+      --terracotta: #D4613A;
+      --white: #FFFFFF;
+      --black: #111110;
+      --display: 'Playfair Display', serif;
+      --body: 'DM Sans', sans-serif;
+      --accent-serif: 'Cormorant Garamond', serif;
+    }
+
+    /* =========================================
+       SKIP NAV
+       ========================================= */
+    .skip-nav {
+      position: absolute;
+      top: -100%;
+      left: 16px;
+      z-index: 10000;
+      background: var(--forest);
+      color: var(--white);
+      font-family: var(--body);
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 12px 24px;
+      border-radius: 0 0 8px 8px;
+      text-decoration: none;
+      transition: top 0.2s;
+    }
+
+    .skip-nav:focus {
+      top: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* =========================================
+       REDUCED MOTION
+       ========================================= */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .hero-stats-card,
+      .hero-stats-card:hover,
+      .inquiry-form-card,
+      .inquiry-form-card:hover,
+      .skill-card:hover,
+      .project-featured:hover,
+      .project-card:hover,
+      .claude-card:hover,
+      .shopify-card:hover,
+      .service-card:hover {
+        transform: none !important;
+      }
+    }
+
+    body {
+      font-family: var(--body);
+      font-weight: 400;
+      color: var(--text);
+      background-color: var(--bg);
+      font-size: 17px;
+      line-height: 1.7;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Grain texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 180px 180px;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    ul, ol { list-style: none; }
+    img { max-width: 100%; display: block; }
+    button, input, select, textarea { font-family: inherit; font-size: inherit; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-label {
+      font-family: var(--accent-serif);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--brass);
+      font-size: 0.95rem;
+      letter-spacing: 0.06em;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: 3rem;
+      color: var(--text);
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    /* =========================================
+       NAV
+       ========================================= */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(245, 240, 235, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+      padding: 0 24px;
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-logo-circle {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--forest);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brass);
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: 1.15rem;
+    }
+
+    .nav-logo-text {
+      font-family: var(--body);
+      font-weight: 600;
+      font-size: 0.875rem;
+      letter-spacing: 0.12em;
+      color: var(--text);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-link {
+      font-family: var(--body);
+      font-weight: 500;
+      font-size: 0.875rem;
+      letter-spacing: 0.08em;
+      color: var(--text-secondary);
+      transition: color 0.3s;
+      padding: 8px 4px;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .nav-link:hover { color: var(--forest); }
+
+    .nav-link:focus-visible {
+      outline: 3px solid var(--forest);
+      outline-offset: 2px;
+      border-radius: 4px;
+      color: var(--forest);
+    }
+
+    .nav-cta {
+      font-family: var(--body);
+      font-weight: 600;
+      font-size: 0.875rem;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      background: var(--forest);
+      padding: 12px 24px;
+      min-height: 44px;
+      border-radius: 6px;
+      transition: background 0.3s, transform 0.3s;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .nav-cta:hover { background: #1e2d1f; transform: translateY(-1px); }
+
+    .nav-cta:focus-visible {
+      outline: 3px solid var(--brass);
+      outline-offset: 2px;
+    }
+
+    /* Mobile hamburger */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+      min-width: 44px;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+    }
+
+    .nav-hamburger:focus-visible {
+      outline: 3px solid var(--forest);
+      outline-offset: 2px;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      transition: transform 0.3s;
+    }
+
+    /* =========================================
+       HERO
+       ========================================= */
+    .hero {
+      padding: 140px 0 100px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-label {
+      font-family: var(--accent-serif);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--brass);
+      font-size: 1.05rem;
+      letter-spacing: 0.06em;
+      margin-bottom: 16px;
+    }
+
+    .hero-title {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: 5.5rem;
+      line-height: 1.02;
+      margin-bottom: 28px;
+    }
+
+    .hero-title .green { color: var(--forest); }
+
+    .hero-subtitle {
+      font-family: var(--body);
+      font-weight: 300;
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      max-width: 540px;
+      margin-bottom: 36px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-solid {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--body);
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      padding: 14px 30px;
+      min-height: 44px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-green {
+      background: var(--forest);
+      color: var(--white);
+    }
+
+    .btn-green:hover { background: #1e2d1f; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(44,62,45,0.25); }
+
+    .btn-solid:focus-visible {
+      outline: 3px solid var(--brass);
+      outline-offset: 3px;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--brass);
+      border: 1.5px solid var(--brass);
+      padding: 13px 30px;
+      min-height: 44px;
+    }
+
+    .btn-outline:hover { background: var(--brass); color: var(--white); transform: translateY(-2px); }
+
+    /* Stats Card */
+    .hero-stats-card {
+      background: var(--forest);
+      color: var(--white);
+      border-radius: 16px;
+      padding: 40px 36px;
+      transform: perspective(800px) rotateY(-6deg) rotateX(3deg);
+      box-shadow: 24px 24px 60px rgba(44, 62, 45, 0.3), -4px -4px 20px rgba(201, 169, 110, 0.08);
+      position: relative;
+      transition: transform 0.4s;
+    }
+
+    .hero-stats-card:hover {
+      transform: perspective(800px) rotateY(-2deg) rotateX(1deg);
+    }
+
+    .stats-label {
+      font-family: var(--body);
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      color: var(--brass);
+      margin-bottom: 28px;
+    }
+
+    .stats-row {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .stat-item {
+      text-align: center;
+      flex: 1;
+    }
+
+    .stat-number {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: 2rem;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .stat-label-text {
+      font-family: var(--body);
+      font-weight: 400;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.85);
+      margin-top: 6px;
+    }
+
+    .stats-divider {
+      width: 1px;
+      background: rgba(201, 169, 110, 0.3);
+    }
+
+    .stats-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .stats-pill {
+      font-family: var(--body);
+      font-weight: 500;
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: rgba(201, 169, 110, 0.2);
+      color: var(--brass);
+      border: 1px solid rgba(201, 169, 110, 0.4);
+    }
+
+    /* 3D Decorative elements */
+    .hero-decor {
+      position: absolute;
+      pointer-events: none;
+    }
+
+    .decor-square {
+      width: 80px;
+      height: 80px;
+      border: 1.5px solid var(--brass);
+      position: absolute;
+      opacity: 0.18;
+    }
+
+    .decor-square-1 {
+      top: 120px; right: 60px;
+      transform: rotate(35deg);
+    }
+
+    .decor-square-2 {
+      bottom: 40px; right: 180px;
+      width: 50px; height: 50px;
+      transform: rotate(55deg);
+      opacity: 0.12;
+    }
+
+    .decor-circles {
+      position: absolute;
+      top: 80px; left: -40px;
+      opacity: 0.08;
+    }
+
+    .decor-circles circle {
+      fill: none;
+      stroke: var(--brass);
+      stroke-width: 1;
+    }
+
+    /* =========================================
+       CORE SKILLS
+       ========================================= */
+    .skills {
+      padding: 100px 0;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .skill-card {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 36px 30px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .skill-card:hover {
+      transform: perspective(600px) rotateY(-3deg) translateY(-4px);
+      box-shadow: 12px 12px 40px rgba(0,0,0,0.08);
+    }
+
+    .skill-card.dark {
+      background: var(--forest);
+      color: var(--white);
+      border-color: transparent;
+    }
+
+    .skill-card.dark .skill-techs { color: rgba(255,255,255,0.85); }
+    .skill-card.dark .skill-title { color: var(--white); }
+
+    .skill-card.black {
+      background: var(--black);
+      color: var(--white);
+      border-color: transparent;
+    }
+
+    .skill-card.black .skill-techs { color: rgba(255,255,255,0.82); }
+    .skill-card.black .skill-title { color: var(--white); }
+
+    .skill-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 1.3rem;
+    }
+
+    .skill-icon.green-bg { background: rgba(44, 62, 45, 0.1); color: var(--forest); }
+    .skill-icon.brass-bg { background: rgba(201, 169, 110, 0.15); color: var(--brass); }
+    .skill-icon.terra-bg { background: rgba(212, 97, 58, 0.12); color: var(--terracotta); }
+    .skill-icon.white-bg { background: rgba(255,255,255,0.12); color: var(--white); }
+    .skill-icon.brass-light-bg { background: rgba(201, 169, 110, 0.12); color: var(--brass); }
+
+    .skill-title {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .skill-techs {
+      font-family: var(--body);
+      font-weight: 300;
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+
+    .skill-bar {
+      position: absolute;
+      bottom: 0;
+      left: 30px;
+      right: 30px;
+      height: 3px;
+      border-radius: 2px;
+    }
+
+    .skill-bar.brass { background: var(--brass); }
+    .skill-bar.green { background: var(--forest); }
+    .skill-bar.terra { background: var(--terracotta); }
+    .skill-bar.white-bar { background: rgba(255,255,255,0.3); }
+
+    /* =========================================
+       PROJECTS
+       ========================================= */
+    .projects {
+      padding: 100px 0;
+    }
+
+    .project-featured {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-top: 48px;
+      min-height: 380px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .project-featured:hover {
+      transform: perspective(800px) rotateY(-1.5deg) translateY(-4px);
+      box-shadow: 16px 16px 48px rgba(0,0,0,0.1);
+    }
+
+    .project-featured-content {
+      background: var(--forest);
+      color: var(--white);
+      padding: 48px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .project-featured-visual {
+      background: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-featured-visual svg {
+      opacity: 0.15;
+    }
+
+    .project-tags {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .project-tag {
+      font-family: var(--body);
+      font-weight: 500;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      padding: 5px 12px;
+      border-radius: 16px;
+      background: rgba(201, 169, 110, 0.18);
+      color: var(--brass);
+    }
+
+    .project-tag.dark-tag {
+      background: rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.9);
+    }
+
+    .project-title {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .project-desc {
+      font-family: var(--body);
+      font-weight: 400;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.88);
+      margin-bottom: 20px;
+    }
+
+    .project-link {
+      font-family: var(--body);
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--brass);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.3s;
+    }
+
+    .project-link:hover { gap: 12px; }
+
+    .project-link:focus-visible {
+      outline: 3px solid var(--brass);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    .projects-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .project-card {
+      border-radius: 14px;
+      padding: 36px 30px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: default;
+      position: relative;
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .project-card:hover {
+      transform: perspective(600px) rotateY(-2deg) translateY(-4px);
+      box-shadow: 12px 12px 40px rgba(0,0,0,0.08);
+    }
+
+    .project-card.light { background: var(--white); }
+    .project-card.dark { background: var(--forest); color: var(--white); border-color: transparent; }
+    .project-card.dark .project-desc { color: rgba(255,255,255,0.85); }
+    .project-card.black { background: var(--black); color: var(--white); border-color: transparent; }
+    .project-card.black .project-desc { color: rgba(255,255,255,0.82); }
+    .project-card.light .project-desc { color: var(--text-secondary); }
+    .project-card.light .project-title { color: var(--text); }
+
+    /* =========================================
+       CLAUDE CODE SECTION
+       ========================================= */
+    .claude-section {
+      padding: 100px 0;
+      background: var(--forest);
+      color: var(--white);
+      position: relative;
+    }
+
+    .claude-section .section-title { color: var(--white); }
+
+    .claude-desc {
+      font-family: var(--body);
+      font-weight: 400;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.88);
+      max-width: 640px;
+      margin-bottom: 48px;
+    }
+
+    .claude-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .claude-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(201, 169, 110, 0.12);
+      border-radius: 14px;
+      padding: 32px 26px;
+      transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+    }
+
+    .claude-card:hover {
+      background: rgba(255,255,255,0.1);
+      transform: perspective(600px) rotateY(-2deg) translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+    }
+
+    .claude-card-graphic {
+      width: 100%;
+      margin-bottom: 16px;
+      border-radius: 10px;
+      overflow: hidden;
+      background: rgba(0,0,0,0.08);
+      padding: 8px 0;
+    }
+
+    .claude-card-graphic svg {
+      width: 100%;
+      height: auto;
+    }
+
+    .claude-card-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: rgba(201, 169, 110, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .claude-card-icon svg {
+      width: 26px;
+      height: 26px;
+      stroke: var(--brass);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .claude-card-title {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+      color: var(--white);
+    }
+
+    .claude-card-desc {
+      font-family: var(--body);
+      font-weight: 400;
+      font-size: 0.9rem;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.85);
+    }
+
+    /* =========================================
+       TOOLS BAR
+       ========================================= */
+    .tools-bar {
+      padding: 60px 0;
+      border-top: 1px solid rgba(201, 169, 110, 0.15);
+      border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+    }
+
+    .tools-inner {
+      display: flex;
+      justify-content: center;
+      gap: 64px;
+      flex-wrap: wrap;
+    }
+
+    .tool-group {
+      text-align: center;
+    }
+
+    .tool-group-label {
+      font-family: var(--body);
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      color: var(--brass);
+      margin-bottom: 10px;
+    }
+
+    .tool-group-items {
+      font-family: var(--body);
+      font-weight: 300;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+    }
+
+    /* =========================================
+       SHOPIFY SOLUTIONS
+       ========================================= */
+    .shopify-section {
+      padding: 100px 0;
+      background: linear-gradient(180deg, var(--bg) 0%, #EDE7DF 100%);
+      position: relative;
+    }
+
+    .shopify-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--terracotta), var(--brass), var(--forest));
+    }
+
+    .shopify-lead {
+      font-family: var(--body);
+      font-weight: 300;
+      font-size: 1.15rem;
+      line-height: 1.75;
+      color: var(--text-secondary);
+      max-width: 680px;
+      margin-bottom: 56px;
+    }
+
+    .shopify-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 56px;
+    }
+
+    .shopify-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 36px 30px;
+      border: 1px solid rgba(0,0,0,0.04);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+    }
+
+    .shopify-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+    }
+
+    .shopify-card-number {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: 3rem;
+      color: rgba(212, 97, 58, 0.08);
+      position: absolute;
+      top: 16px;
+      right: 24px;
+      line-height: 1;
+    }
+
+    .shopify-card-title {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .shopify-card-problem {
+      font-family: var(--accent-serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 0.95rem;
+      color: var(--terracotta);
+      margin-bottom: 14px;
+      line-height: 1.5;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(212, 97, 58, 0.12);
+    }
+
+    .shopify-card-solution {
+      font-family: var(--body);
+      font-weight: 400;
+      font-size: 0.9rem;
+      line-height: 1.65;
+      color: var(--text-secondary);
+    }
+
+    .shopify-cta-row {
+      text-align: center;
+    }
+
+    .shopify-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 18px 48px;
+      min-height: 56px;
+      background: var(--terracotta);
+      color: var(--white);
+      font-family: var(--body);
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      border-radius: 60px;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .shopify-cta-btn:hover {
+      background: #C0552F;
+      transform: translateY(-2px);
+    }
+
+    .shopify-cta-btn:focus-visible {
+      outline: 3px solid var(--forest);
+      outline-offset: 3px;
+    }
+
+    .shopify-cta-note {
+      font-family: var(--body);
+      font-weight: 300;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-top: 14px;
+    }
+
+    /* =========================================
+       CREDIBILITY BAR
+       ========================================= */
+    .credibility {
+      padding: 72px 0;
+      text-align: center;
+    }
+
+    .credibility-label {
+      font-family: var(--body);
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      color: var(--text-secondary);
+      margin-bottom: 36px;
+    }
+
+    .credibility-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+
+    .credibility-item {
+      padding: 0 32px;
+      text-align: center;
+      border-right: 1px solid var(--brass);
+    }
+
+    .credibility-item:last-child { border-right: none; }
+
+    .credibility-name {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .credibility-sub {
+      font-family: var(--body);
+      font-weight: 400;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      color: var(--text-secondary);
+    }
+
+    /* =========================================
+       SERVICES
+       ========================================= */
+    .services {
+      padding: 100px 0;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .service-card {
+      border-radius: 14px;
+      padding: 40px 30px;
+      position: relative;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 12px 12px 40px rgba(0,0,0,0.1);
+    }
+
+    .service-card.light { background: var(--white); }
+    .service-card.dark { background: var(--forest); color: var(--white); border-color: transparent; }
+    .service-card.black { background: var(--black); color: var(--white); border-color: transparent; }
+
+    .service-badge {
+      position: absolute;
+      top: -12px;
+      right: 24px;
+      font-family: var(--body);
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      padding: 6px 16px;
+      border-radius: 20px;
+      background: var(--brass);
+      color: var(--white);
+    }
+
+    .service-type {
+      font-family: var(--body);
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      color: var(--brass);
+      margin-bottom: 8px;
+    }
+
+    .service-title {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: 1.6rem;
+      margin-bottom: 6px;
+    }
+
+    .service-card.light .service-title { color: var(--text); }
+    .service-card.dark .service-title { color: var(--white); }
+    .service-card.black .service-title { color: var(--white); }
+
+    .service-subtitle {
+      font-family: var(--body);
+      font-weight: 300;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+    }
+
+    .service-card.dark .service-subtitle { color: rgba(255,255,255,0.82); }
+    .service-card.black .service-subtitle { color: rgba(255,255,255,0.82); }
+
+    .service-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .service-list li {
+      font-family: var(--body);
+      font-weight: 400;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+
+    .service-card.dark .service-list li { color: rgba(255,255,255,0.92); }
+    .service-card.black .service-list li { color: rgba(255,255,255,0.9); }
+
+    .check-icon {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    .check-icon.green { background: rgba(44, 62, 45, 0.1); color: var(--forest); }
+    .check-icon.brass { background: rgba(201, 169, 110, 0.15); color: var(--brass); }
+    .check-icon.terra { background: rgba(212, 97, 58, 0.15); color: var(--terracotta); }
+    .check-icon.white-check { background: rgba(255,255,255,0.12); color: var(--white); }
+
+    .check-svg { width: 10px; height: 10px; }
+
+    /* =========================================
+       INQUIRY FORM
+       ========================================= */
+    .inquiry {
+      padding: 100px 0;
+    }
+
+    .inquiry-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .inquiry-info h3 {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: 2.8rem;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .inquiry-info p {
+      font-family: var(--body);
+      font-weight: 300;
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .inquiry-detail {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .inquiry-detail-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(44, 62, 45, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .inquiry-detail-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--forest);
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .inquiry-detail-label {
+      font-family: var(--body);
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      color: var(--text-secondary);
+    }
+
+    .inquiry-detail-value {
+      font-family: var(--body);
+      font-weight: 400;
+      font-size: 0.92rem;
+      color: var(--text);
+    }
+
+    .inquiry-form-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 40px 36px;
+      border: 1px solid rgba(0,0,0,0.04);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+      transform: perspective(800px) rotateY(2deg);
+      transition: transform 0.4s;
+    }
+
+    .inquiry-form-card:hover {
+      transform: perspective(800px) rotateY(0deg);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      font-family: var(--body);
+      font-weight: 600;
+      font-size: 0.875rem;
+      letter-spacing: 0.08em;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid rgba(0,0,0,0.15);
+      border-radius: 8px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body);
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.5;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      outline: none;
+      min-height: 44px;
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      border-color: var(--forest);
+      box-shadow: 0 0 0 3px rgba(44, 62, 45, 0.15);
+    }
+
+    .form-input:focus-visible,
+    .form-select:focus-visible,
+    .form-textarea:focus-visible {
+      border-color: var(--forest);
+      box-shadow: 0 0 0 3px rgba(44, 62, 45, 0.2);
+      outline: none;
+    }
+
+    .form-textarea { resize: vertical; min-height: 120px; }
+    .form-select { cursor: pointer; appearance: auto; }
+
+    .form-submit {
+      width: 100%;
+      padding: 14px 24px;
+      min-height: 48px;
+      background: var(--forest);
+      color: var(--white);
+      font-family: var(--body);
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+
+    .form-submit:hover {
+      background: #1e2d1f;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(44, 62, 45, 0.25);
+    }
+
+    .form-submit:focus-visible {
+      outline: 3px solid var(--brass);
+      outline-offset: 2px;
+    }
+
+    /* =========================================
+       FOOTER
+       ========================================= */
+    .footer {
+      padding: 40px 0 48px;
+      position: relative;
+    }
+
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 24px; right: 24px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--brass), transparent);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 32px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-logo-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--forest);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brass);
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: 0.9rem;
+    }
+
+    .footer-logo-text {
+      font-family: var(--body);
+      font-weight: 600;
+      font-size: 0.875rem;
+      letter-spacing: 0.1em;
+      color: var(--text);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-social-link {
+      color: var(--text-secondary);
+      transition: color 0.3s;
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-social-link:hover { color: var(--forest); }
+
+    .footer-social-link:focus-visible {
+      outline: 3px solid var(--forest);
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+
+    .footer-social-link svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    .nav-logo:focus-visible {
+      outline: 3px solid var(--forest);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    .footer-right {
+      font-family: var(--body);
+      font-weight: 400;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+
+    .footer-right a {
+      color: var(--forest);
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .footer-right a:hover { color: var(--brass); }
+
+    /* =========================================
+       RESPONSIVE
+       ========================================= */
+    @media (max-width: 1024px) {
+      .hero-title { font-size: 4rem; }
+      .hero-inner { grid-template-columns: 1fr 360px; gap: 40px; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .claude-grid { grid-template-columns: repeat(2, 1fr); }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .shopify-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+
+      .hero { padding: 110px 0 60px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero-title { font-size: 3.2rem; }
+      .hero-subtitle { font-size: 1rem; }
+      .hero-stats-card {
+        transform: none;
+        max-width: 400px;
+      }
+      .hero-stats-card:hover { transform: none; }
+
+      .section-title { font-size: 2.2rem; }
+
+      .skills-grid { grid-template-columns: 1fr; }
+      .claude-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .shopify-grid { grid-template-columns: 1fr; }
+      .projects-row { grid-template-columns: 1fr; }
+
+      .project-featured { grid-template-columns: 1fr; }
+      .project-featured-visual { min-height: 200px; }
+
+      .inquiry-inner { grid-template-columns: 1fr; gap: 40px; }
+      .inquiry-form-card { transform: none; }
+      .inquiry-form-card:hover { transform: none; }
+
+      .credibility-row { flex-direction: column; gap: 20px; }
+      .credibility-item { border-right: none; border-bottom: 1px solid rgba(201, 169, 110, 0.2); padding: 12px 0; }
+      .credibility-item:last-child { border-bottom: none; }
+
+      .tools-inner { gap: 32px; }
+
+      .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
+
+      .decor-square, .decor-circles { display: none; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title { font-size: 2.6rem; }
+      .hero-ctas { flex-direction: column; }
+      .hero-ctas .btn-solid, .hero-ctas .btn-outline { width: 100%; justify-content: center; }
+      .stats-row { gap: 16px; }
+      .stat-number { font-size: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SKIP NAVIGATION -->
+  <a href="#main-content" class="skip-nav">Skip to main content</a>
+
+  <!-- NAV -->
+  <nav class="nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="/hire" class="nav-logo" aria-label="Agent Abrams — return to top">
+        <div class="nav-logo-circle" aria-hidden="true">A</div>
+        <span class="nav-logo-text">AGENT ABRAMS</span>
+      </a>
+      <div class="nav-links">
+        <a href="#skills" class="nav-link">SKILLS</a>
+        <a href="#projects" class="nav-link">PROJECTS</a>
+        <a href="#platforms" class="nav-link">PLATFORMS</a>
+        <a href="#services" class="nav-link">SERVICES</a>
+        <a href="#inquiry" class="nav-cta">INQUIRE</a>
+      </div>
+      <button class="nav-hamburger" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('mobile-open')">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="main-content">
+    <!-- Decorative elements (hidden from screen readers) -->
+    <div class="decor-square decor-square-1" aria-hidden="true"></div>
+    <div class="decor-square decor-square-2" aria-hidden="true"></div>
+    <svg class="decor-circles" width="200" height="200" viewBox="0 0 200 200" aria-hidden="true">
+      <circle cx="100" cy="100" r="40" />
+      <circle cx="100" cy="100" r="65" />
+      <circle cx="100" cy="100" r="90" />
+    </svg>
+
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <p class="hero-label">SENIOR FULL STACK DEVELOPER</p>
+          <h1 class="hero-title">
+            Agent<br /><span class="green">Abrams</span>
+          </h1>
+          <p class="hero-subtitle">
+            I build production systems that replace entire dev teams. AI-powered automation,
+            full-stack applications, and e-commerce platforms &mdash; shipped fast, built to last.
+          </p>
+          <div class="hero-ctas">
+            <a href="#projects" class="btn-solid btn-green">View Projects</a>
+            <a href="#inquiry" class="btn-solid btn-outline">Get In Touch</a>
+          </div>
+        </div>
+
+        <div class="hero-stats-card">
+          <p class="stats-label">TRACK RECORD</p>
+          <div class="stats-row">
+            <div class="stat-item">
+              <div class="stat-number">12+</div>
+              <div class="stat-label-text">YEARS EXP</div>
+            </div>
+            <div class="stats-divider"></div>
+            <div class="stat-item">
+              <div class="stat-number">50+</div>
+              <div class="stat-label-text">PROJECTS</div>
+            </div>
+            <div class="stats-divider"></div>
+            <div class="stat-item">
+              <div class="stat-number">3</div>
+              <div class="stat-label-text">TOP PLATFORMS</div>
+            </div>
+          </div>
+          <div class="stats-pills">
+            <span class="stats-pill">TopTal</span>
+            <span class="stats-pill">Braintrust</span>
+            <span class="stats-pill">Storetasker</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CORE SKILLS -->
+  <section class="skills" id="skills">
+    <div class="container">
+      <p class="section-label">WHAT I DO</p>
+      <h2 class="section-title">Core Skills</h2>
+
+      <div class="skills-grid">
+        <!-- 1. Frontend -->
+        <div class="skill-card">
+          <div class="skill-icon green-bg">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3 class="skill-title">Frontend</h3>
+          <p class="skill-techs">React, Next.js, Vue, TypeScript, Tailwind CSS, Three.js, WebGL</p>
+          <div class="skill-bar brass"></div>
+        </div>
+
+        <!-- 2. Backend (dark) -->
+        <div class="skill-card dark">
+          <div class="skill-icon white-bg">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><line x1="4" y1="10" x2="20" y2="10"/><line x1="10" y1="4" x2="10" y2="20"/></svg>
+          </div>
+          <h3 class="skill-title">Backend</h3>
+          <p class="skill-techs">Node.js, Python, PostgreSQL, REST APIs, GraphQL, Redis, AWS</p>
+          <div class="skill-bar white-bar"></div>
+        </div>
+
+        <!-- 3. AI / Automation -->
+        <div class="skill-card">
+          <div class="skill-icon terra-bg">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3 class="skill-title">AI / Automation</h3>
+          <p class="skill-techs">Claude API, LLM pipelines, MCP servers, AI agents, web scraping</p>
+          <div class="skill-bar terra"></div>
+        </div>
+
+        <!-- 4. E-Commerce -->
+        <div class="skill-card">
+          <div class="skill-icon brass-bg">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          </div>
+          <h3 class="skill-title">E-Commerce</h3>
+          <p class="skill-techs">Shopify, Liquid, Storefront API, payment integration, product catalogs</p>
+          <div class="skill-bar brass"></div>
+        </div>
+
+        <!-- 5. DevOps -->
+        <div class="skill-card">
+          <div class="skill-icon green-bg">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <h3 class="skill-title">DevOps</h3>
+          <p class="skill-techs">PM2, nginx, Docker, CI/CD, Linux server admin, monitoring</p>
+          <div class="skill-bar green"></div>
+        </div>
+
+        <!-- 6. Web3 / Crypto (black) -->
+        <div class="skill-card black">
+          <div class="skill-icon brass-light-bg">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h3 class="skill-title">Web3 / Crypto</h3>
+          <p class="skill-techs">DeFi platforms, token systems, blockchain integration, trading bots</p>
+          <div class="skill-bar brass"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="projects" id="projects">
+    <div class="container">
+      <p class="section-label">SELECTED WORK</p>
+      <h2 class="section-title">Projects</h2>
+
+      <!-- Featured: Shumi -->
+      <div class="project-featured">
+        <div class="project-featured-content">
+          <div class="project-tags">
+            <span class="project-tag">React</span>
+            <span class="project-tag">Full Stack</span>
+            <span class="project-tag">Consumer</span>
+          </div>
+          <h3 class="project-title">Shumi</h3>
+          <p class="project-desc">A hobby and collection tracking platform. Organize, track, and share your collections with a community of enthusiasts.</p>
+          <a href="#" class="project-link">View Project <span>&rarr;</span></a>
+        </div>
+        <div class="project-featured-visual" aria-hidden="true">
+          <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="rgba(201,169,110,0.4)" stroke-width="1" aria-hidden="true">
+            <rect x="20" y="20" width="80" height="80" rx="4" />
+            <rect x="30" y="30" width="25" height="25" rx="2" />
+            <rect x="65" y="30" width="25" height="25" rx="2" />
+            <rect x="30" y="65" width="25" height="25" rx="2" />
+            <rect x="65" y="65" width="25" height="25" rx="2" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="projects-row">
+        <div class="project-card light">
+          <div class="project-tags">
+            <span class="project-tag" style="background: rgba(44,62,45,0.08); color: var(--forest);">Crypto</span>
+            <span class="project-tag" style="background: rgba(44,62,45,0.08); color: var(--forest);">React</span>
+            <span class="project-tag" style="background: rgba(44,62,45,0.08); color: var(--forest);">AI</span>
+          </div>
+          <h3 class="project-title" style="margin-top: 12px;">CoinRotator</h3>
+          <p class="project-desc">Crypto screener with trend analysis, AI-powered insights, custom alerts, and TradingView integration.</p>
+          <a href="https://coinrotator.app" target="_blank" rel="noopener" class="project-link" style="color: var(--forest);">coinrotator.app <span>&rarr;</span></a>
+        </div>
+
+        <div class="project-card dark">
+          <div class="project-tags">
+            <span class="project-tag dark-tag">Health</span>
+            <span class="project-tag dark-tag">Marketplace</span>
+            <span class="project-tag dark-tag">Full Stack</span>
+          </div>
+          <h3 class="project-title" style="margin-top: 12px;">Theta Health</h3>
+          <p class="project-desc">Psychedelic-assisted therapy provider marketplace. Connecting patients with verified practitioners.</p>
+          <a href="https://theta.health" target="_blank" rel="noopener" class="project-link">theta.health <span>&rarr;</span></a>
+        </div>
+      </div>
+
+      <!-- Row 3 -->
+      <div class="projects-row">
+        <div class="project-card black">
+          <div class="project-tags">
+            <span class="project-tag dark-tag">NFT</span>
+            <span class="project-tag dark-tag">Web3</span>
+            <span class="project-tag dark-tag">Community</span>
+          </div>
+          <h3 class="project-title" style="margin-top: 12px;">Crypto Design Club</h3>
+          <p class="project-desc">An NFT and design community bridging creative professionals with blockchain technology.</p>
+          <a href="#" class="project-link">View Project <span>&rarr;</span></a>
+        </div>
+
+        <div class="project-card light">
+          <div class="project-tags">
+            <span class="project-tag" style="background: rgba(212,97,58,0.1); color: var(--terracotta);">Travel</span>
+            <span class="project-tag" style="background: rgba(212,97,58,0.1); color: var(--terracotta);">Utility</span>
+            <span class="project-tag" style="background: rgba(212,97,58,0.1); color: var(--terracotta);">Data</span>
+          </div>
+          <h3 class="project-title" style="margin-top: 12px;">Is Water Safe to Drink?</h3>
+          <p class="project-desc">A travel utility providing global water quality data, safety ratings, and purification recommendations by country.</p>
+          <a href="#" class="project-link" style="color: var(--forest);">View Project <span>&rarr;</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUILT WITH CLAUDE CODE -->
+  <section class="claude-section" id="claude">
+    <div class="container">
+      <p class="section-label">BUILT WITH AI</p>
+      <h2 class="section-title">Claude Code Creations</h2>
+      <p class="claude-desc">
+        Production tools built for the interior design trade &mdash; AI-powered applications that automate
+        what used to take entire teams.
+      </p>
+
+      <div class="claude-grid">
+        <!-- 1. Color Search -->
+        <div class="claude-card">
+          <div class="claude-card-icon">
+            <svg viewBox="0 0 24 24"><circle cx="7" cy="7" r="3"/><circle cx="17" cy="7" r="3"/><circle cx="7" cy="17" r="3"/><circle cx="17" cy="17" r="3"/><line x1="10" y1="7" x2="14" y2="7"/><line x1="7" y1="10" x2="7" y2="14"/></svg>
+          </div>
+          <h3 class="claude-card-title">Color Search</h3>
+          <p class="claude-card-desc">AI color matching tool. Extracts hex codes from product images and matches across 2,500+ products in real time.</p>
+        </div>
+
+        <!-- 2. Coordinate Builder -->
+        <div class="claude-card">
+          <div class="claude-card-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          </div>
+          <h3 class="claude-card-title">Coordinate Builder</h3>
+          <p class="claude-card-desc">Interactive product coordinate and room board builder. Drag-and-drop layout tool for design presentations.</p>
+        </div>
+
+        <!-- 3. Art Museum Importer -->
+        <div class="claude-card">
+          <div class="claude-card-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><rect x="6" y="6" width="12" height="9" rx="1"/><line x1="6" y1="19" x2="18" y2="19"/></svg>
+          </div>
+          <h3 class="claude-card-title">Art Museum Importer</h3>
+          <p class="claude-card-desc">Met Museum art print pipeline. Imports museum artwork, creates product pages, and generates room settings automatically.</p>
+        </div>
+
+        <!-- 4. Room Setting Generator -->
+        <div class="claude-card">
+          <div class="claude-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21V14h6v7"/><path d="M3 21h18"/></svg>
+          </div>
+          <h3 class="claude-card-title">Room Setting Generator</h3>
+          <p class="claude-card-desc">AI-generated photorealistic room visualizations with product patterns. Bedroom, living room, and office settings.</p>
+        </div>
+
+        <!-- 5. 360 Spin Viewer -->
+        <div class="claude-card">
+          <div class="claude-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-9-9"/><path d="M21 3v9h-9"/></svg>
+          </div>
+          <h3 class="claude-card-title">360 Spin Viewer</h3>
+          <p class="claude-card-desc">Interactive product spin viewer with smooth rotation. WebGL-based product visualization for immersive browsing.</p>
+        </div>
+
+        <!-- 6. Email-to-Social Pipeline -->
+        <div class="claude-card">
+          <div class="claude-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h6v6H4z"/><path d="M14 4h6v6h-6z"/><path d="M14 14h6v6h-6z"/><line x1="7" y1="10" x2="7" y2="14"/><line x1="7" y1="14" x2="14" y2="14"/><line x1="14" y1="7" x2="14" y2="7"/><path d="M7 14v3h7"/></svg>
+          </div>
+          <h3 class="claude-card-title">Email &rarr; Shopify &rarr; Social</h3>
+          <p class="claude-card-desc">Automated content flow: vendor email arrives, products created in store, social media posts auto-generated for Instagram, TikTok, LinkedIn.</p>
+        </div>
+
+        <!-- 7. Content Sanitizer -->
+        <div class="claude-card">
+          <div class="claude-card-graphic">
+            <svg viewBox="0 0 200 120" fill="none">
+              <rect x="20" y="10" width="160" height="100" rx="8" fill="rgba(201,169,110,0.06)" stroke="rgba(201,169,110,0.15)" stroke-width="1"/>
+              <rect x="36" y="28" width="80" height="6" rx="3" fill="rgba(255,255,255,0.15)"/>
+              <rect x="36" y="40" width="60" height="6" rx="3" fill="rgba(255,255,255,0.1)"/>
+              <rect x="36" y="52" width="90" height="6" rx="3" fill="rgba(212,97,58,0.3)"/>
+              <rect x="36" y="64" width="70" height="6" rx="3" fill="rgba(255,255,255,0.1)"/>
+              <rect x="36" y="76" width="85" height="6" rx="3" fill="rgba(255,255,255,0.15)"/>
+              <rect x="36" y="88" width="50" height="6" rx="3" fill="rgba(212,97,58,0.3)"/>
+              <path d="M140 45l12 12 24-24" stroke="#2C3E2D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="155" cy="50" r="28" stroke="rgba(44,62,45,0.3)" stroke-width="1.5" fill="none" stroke-dasharray="4 3"/>
+            </svg>
+          </div>
+          <h3 class="claude-card-title">Content Sanitizer</h3>
+          <p class="claude-card-desc">200+ regex patterns across 8 security categories. Scans every blog post, video, and social update before publishing &mdash; zero data leaks across 5 channels.</p>
+        </div>
+
+        <!-- 8. Parallel Agent Orchestrator -->
+        <div class="claude-card">
+          <div class="claude-card-graphic">
+            <svg viewBox="0 0 200 120" fill="none">
+              <circle cx="100" cy="60" r="14" fill="rgba(201,169,110,0.2)" stroke="#C9A96E" stroke-width="1.5"/>
+              <text x="100" y="65" text-anchor="middle" fill="#C9A96E" font-size="12" font-weight="700" font-family="Playfair Display, serif">74</text>
+              <circle cx="40" cy="25" r="8" fill="rgba(44,62,45,0.3)" stroke="rgba(44,62,45,0.5)" stroke-width="1"/>
+              <circle cx="160" cy="25" r="8" fill="rgba(44,62,45,0.3)" stroke="rgba(44,62,45,0.5)" stroke-width="1"/>
+              <circle cx="40" cy="95" r="8" fill="rgba(44,62,45,0.3)" stroke="rgba(44,62,45,0.5)" stroke-width="1"/>
+              <circle cx="160" cy="95" r="8" fill="rgba(44,62,45,0.3)" stroke="rgba(44,62,45,0.5)" stroke-width="1"/>
+              <circle cx="70" cy="30" r="6" fill="rgba(212,97,58,0.25)" stroke="rgba(212,97,58,0.4)" stroke-width="1"/>
+              <circle cx="130" cy="30" r="6" fill="rgba(212,97,58,0.25)" stroke="rgba(212,97,58,0.4)" stroke-width="1"/>
+              <circle cx="70" cy="90" r="6" fill="rgba(212,97,58,0.25)" stroke="rgba(212,97,58,0.4)" stroke-width="1"/>
+              <circle cx="130" cy="90" r="6" fill="rgba(212,97,58,0.25)" stroke="rgba(212,97,58,0.4)" stroke-width="1"/>
+              <line x1="48" y1="28" x2="87" y2="55" stroke="rgba(201,169,110,0.25)" stroke-width="1"/>
+              <line x1="152" y1="28" x2="113" y2="55" stroke="rgba(201,169,110,0.25)" stroke-width="1"/>
+              <line x1="48" y1="92" x2="87" y2="65" stroke="rgba(201,169,110,0.25)" stroke-width="1"/>
+              <line x1="152" y1="92" x2="113" y2="65" stroke="rgba(201,169,110,0.25)" stroke-width="1"/>
+              <line x1="75" y1="32" x2="90" y2="50" stroke="rgba(201,169,110,0.2)" stroke-width="1"/>
+              <line x1="125" y1="32" x2="110" y2="50" stroke="rgba(201,169,110,0.2)" stroke-width="1"/>
+            </svg>
+          </div>
+          <h3 class="claude-card-title">74-Agent Orchestrator</h3>
+          <p class="claude-card-desc">Manages 74 autonomous Node.js processes on a single VPS. Auto-restart, memory isolation, and failure containment &mdash; no cascading crashes.</p>
+        </div>
+
+        <!-- 9. Auto-Publishing Pipeline -->
+        <div class="claude-card">
+          <div class="claude-card-graphic">
+            <svg viewBox="0 0 200 120" fill="none">
+              <rect x="15" y="35" width="40" height="50" rx="6" fill="rgba(201,169,110,0.1)" stroke="rgba(201,169,110,0.2)" stroke-width="1"/>
+              <rect x="20" y="62" width="30" height="3" rx="1.5" fill="rgba(255,255,255,0.12)"/>
+              <rect x="20" y="68" width="22" height="3" rx="1.5" fill="rgba(255,255,255,0.08)"/>
+              <path d="M60 60h25" stroke="rgba(201,169,110,0.4)" stroke-width="1.5" stroke-dasharray="3 2"/>
+              <polygon points="85,56 85,64 92,60" fill="rgba(201,169,110,0.4)"/>
+              <rect x="95" y="42" width="30" height="36" rx="5" fill="rgba(44,62,45,0.2)" stroke="rgba(44,62,45,0.35)" stroke-width="1"/>
+              <path d="M130 60h20" stroke="rgba(201,169,110,0.4)" stroke-width="1.5" stroke-dasharray="3 2"/>
+              <polygon points="150,56 150,64 157,60" fill="rgba(201,169,110,0.4)"/>
+              <circle cx="172" cy="40" r="12" fill="rgba(212,97,58,0.15)" stroke="rgba(212,97,58,0.3)" stroke-width="1"/>
+              <text x="172" y="43" text-anchor="middle" fill="rgba(212,97,58,0.7)" font-size="7" font-family="DM Sans, sans-serif" font-weight="600">X</text>
+              <circle cx="172" cy="65" r="12" fill="rgba(44,62,45,0.15)" stroke="rgba(44,62,45,0.3)" stroke-width="1"/>
+              <text x="172" y="68" text-anchor="middle" fill="rgba(44,62,45,0.7)" font-size="7" font-family="DM Sans, sans-serif" font-weight="600">BS</text>
+              <circle cx="172" cy="90" r="12" fill="rgba(201,169,110,0.15)" stroke="rgba(201,169,110,0.3)" stroke-width="1"/>
+              <text x="172" y="93" text-anchor="middle" fill="rgba(201,169,110,0.7)" font-size="7" font-family="DM Sans, sans-serif" font-weight="600">YT</text>
+            </svg>
+          </div>
+          <h3 class="claude-card-title">Auto-Publishing Pipeline</h3>
+          <p class="claude-card-desc">Generates blog content, sanitizes, publishes to Astro, posts to Twitter, Bluesky, and YouTube &mdash; every 2 hours, fully hands-off.</p>
+        </div>
+
+        <!-- 10. Video Sanitizer -->
+        <div class="claude-card">
+          <div class="claude-card-graphic">
+            <svg viewBox="0 0 200 120" fill="none">
+              <rect x="25" y="15" width="150" height="90" rx="8" fill="rgba(201,169,110,0.06)" stroke="rgba(201,169,110,0.15)" stroke-width="1"/>
+              <rect x="35" y="25" width="90" height="55" rx="4" fill="rgba(0,0,0,0.2)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+              <polygon points="70,42 70,62 88,52" fill="rgba(201,169,110,0.3)" stroke="rgba(201,169,110,0.5)" stroke-width="1"/>
+              <rect x="45" y="60" width="30" height="8" rx="2" fill="rgba(212,97,58,0.4)"/>
+              <rect x="135" y="30" width="30" height="20" rx="3" fill="rgba(44,62,45,0.2)" stroke="rgba(44,62,45,0.3)" stroke-width="1"/>
+              <rect x="135" y="55" width="30" height="20" rx="3" fill="rgba(212,97,58,0.15)" stroke="rgba(212,97,58,0.3)" stroke-width="1"/>
+              <path d="M125 40h8" stroke="rgba(201,169,110,0.3)" stroke-width="1"/>
+              <path d="M125 60h8" stroke="rgba(201,169,110,0.3)" stroke-width="1"/>
+            </svg>
+          </div>
+          <h3 class="claude-card-title">Video Sanitizer</h3>
+          <p class="claude-card-desc">OCR + OpenCV frame-by-frame scanning. Detects 214 sensitive patterns, auto-blurs them with Gaussian blur, re-verifies before YouTube upload.</p>
+        </div>
+
+        <!-- 11. Vendor Command Center -->
+        <div class="claude-card">
+          <div class="claude-card-graphic">
+            <svg viewBox="0 0 200 120" fill="none">
+              <rect x="20" y="10" width="160" height="100" rx="8" fill="rgba(201,169,110,0.06)" stroke="rgba(201,169,110,0.15)" stroke-width="1"/>
+              <rect x="20" y="10" width="160" height="22" rx="8" fill="rgba(44,62,45,0.15)"/>
+              <rect x="20" y="24" width="160" height="2" fill="rgba(44,62,45,0.15)"/>
+              <circle cx="34" cy="21" r="4" fill="rgba(212,97,58,0.5)"/>
+              <circle cx="46" cy="21" r="4" fill="rgba(201,169,110,0.4)"/>
+              <circle cx="58" cy="21" r="4" fill="rgba(44,62,45,0.4)"/>
+              <rect x="30" y="40" width="62" height="28" rx="4" fill="rgba(44,62,45,0.12)" stroke="rgba(44,62,45,0.2)" stroke-width="1"/>
+              <rect x="108" y="40" width="62" height="28" rx="4" fill="rgba(212,97,58,0.1)" stroke="rgba(212,97,58,0.2)" stroke-width="1"/>
+              <rect x="35" y="46" width="30" height="4" rx="2" fill="rgba(44,62,45,0.3)"/>
+              <rect x="35" y="54" width="45" height="4" rx="2" fill="rgba(44,62,45,0.15)"/>
+              <rect x="113" y="46" width="35" height="4" rx="2" fill="rgba(212,97,58,0.3)"/>
+              <rect x="113" y="54" width="25" height="4" rx="2" fill="rgba(212,97,58,0.15)"/>
+              <rect x="30" y="76" width="140" height="6" rx="3" fill="rgba(201,169,110,0.1)"/>
+              <rect x="30" y="76" width="95" height="6" rx="3" fill="rgba(201,169,110,0.25)"/>
+              <rect x="30" y="88" width="140" height="6" rx="3" fill="rgba(201,169,110,0.1)"/>
+              <rect x="30" y="88" width="60" height="6" rx="3" fill="rgba(44,62,45,0.2)"/>
+            </svg>
+          </div>
+          <h3 class="claude-card-title">Vendor Command Center</h3>
+          <p class="claude-card-desc">Dashboard managing 50+ vendor catalog agents. Real-time health checks, cron schedules, SKU prefix assignment, and private label tracking.</p>
+        </div>
+
+        <!-- 12. Self-Healing Scraper -->
+        <div class="claude-card">
+          <div class="claude-card-graphic">
+            <svg viewBox="0 0 200 120" fill="none">
+              <path d="M30 90 Q50 20 100 60 Q150 100 170 30" stroke="rgba(44,62,45,0.4)" stroke-width="2" fill="none"/>
+              <path d="M30 90 Q50 20 100 60 Q150 100 170 30" stroke="rgba(201,169,110,0.6)" stroke-width="2" fill="none" stroke-dasharray="6 4"/>
+              <circle cx="50" cy="48" r="5" fill="rgba(212,97,58,0.4)" stroke="rgba(212,97,58,0.6)" stroke-width="1"/>
+              <circle cx="80" cy="50" r="5" fill="rgba(212,97,58,0.4)" stroke="rgba(212,97,58,0.6)" stroke-width="1"/>
+              <circle cx="120" cy="75" r="5" fill="rgba(44,62,45,0.5)" stroke="rgba(44,62,45,0.7)" stroke-width="1"/>
+              <path d="M118 75l2 2 3-4" stroke="white" stroke-width="1" fill="none"/>
+              <circle cx="150" cy="50" r="5" fill="rgba(44,62,45,0.5)" stroke="rgba(44,62,45,0.7)" stroke-width="1"/>
+              <path d="M148 50l2 2 3-4" stroke="white" stroke-width="1" fill="none"/>
+              <text x="170" y="25" fill="rgba(201,169,110,0.5)" font-size="18" font-weight="900" font-family="Playfair Display, serif">10.7x</text>
+              <rect x="25" y="100" width="150" height="10" rx="5" fill="rgba(201,169,110,0.08)"/>
+              <rect x="25" y="100" width="110" height="10" rx="5" fill="rgba(44,62,45,0.15)"/>
+            </svg>
+          </div>
+          <h3 class="claude-card-title">Self-Healing Scraper</h3>
+          <p class="claude-card-desc">Cockroach architecture: per-record database commits, browser crash recovery, auto-resume from last checkpoint. Grew catalogs 10.7x without manual intervention.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLS BAR -->
+  <section class="tools-bar">
+    <div class="container">
+      <div class="tools-inner">
+        <div class="tool-group">
+          <p class="tool-group-label">PROJECT MGMT</p>
+          <p class="tool-group-items">Asana / Trello / Jira</p>
+        </div>
+        <div class="tool-group">
+          <p class="tool-group-label">COMMUNICATION</p>
+          <p class="tool-group-items">Slack / Teams / Email</p>
+        </div>
+        <div class="tool-group">
+          <p class="tool-group-label">DOCUMENTATION</p>
+          <p class="tool-group-items">Google Drive / Dropbox</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOPIFY SOLUTIONS -->
+  <section class="shopify-section" id="shopify">
+    <div class="container">
+      <p class="section-label" style="color: var(--terracotta);">FOR SHOPIFY STORE OWNERS</p>
+      <h2 class="section-title">Drowning in Product Data?</h2>
+      <p class="shopify-lead">
+        You have thousands of products, dozens of vendors, and not enough hours. These tools were built
+        to solve the exact problems that keep Shopify store owners up at night.
+      </p>
+
+      <div class="shopify-grid">
+        <!-- 1. Product Data Auditor -->
+        <div class="shopify-card">
+          <div class="shopify-card-number">01</div>
+          <h3 class="shopify-card-title">Product Data Auditor</h3>
+          <p class="shopify-card-problem">Missing descriptions, broken images, empty metafields &mdash; killing your SEO and conversions.</p>
+          <p class="shopify-card-solution">Auto-scans your entire catalog. Finds SEO gaps, missing images, duplicate products, and empty collections. Generates AI-powered descriptions and fixes metafields in bulk.</p>
+        </div>
+
+        <!-- 2. Vendor Catalog Sync -->
+        <div class="shopify-card">
+          <div class="shopify-card-number">02</div>
+          <h3 class="shopify-card-title">Vendor Catalog Sync</h3>
+          <p class="shopify-card-problem">Vendor prices change, products get discontinued, your store is always out of date.</p>
+          <p class="shopify-card-solution">Bi-directional sync engine. Imports vendor catalogs, detects price changes, flags discontinued items, and pushes updates to Shopify &mdash; respecting all API rate limits automatically.</p>
+        </div>
+
+        <!-- 3. Discontinued Product Manager -->
+        <div class="shopify-card">
+          <div class="shopify-card-number">03</div>
+          <h3 class="shopify-card-title">Discontinued Product Manager</h3>
+          <p class="shopify-card-problem">Hundreds of dead products cluttering your store, hurting SEO, confusing customers.</p>
+          <p class="shopify-card-solution">Monitors vendor sites for 301 redirects and 404s. Auto-archives discontinued products, creates proper redirects, and cleans up orphaned collections. Zero manual work.</p>
+        </div>
+
+        <!-- 4. Image Recovery Agent -->
+        <div class="shopify-card">
+          <div class="shopify-card-number">04</div>
+          <h3 class="shopify-card-title">Image Recovery Agent</h3>
+          <p class="shopify-card-problem">200+ products with no images sitting live on your store, destroying conversion rates.</p>
+          <p class="shopify-card-solution">Hunts vendor websites for missing product images, validates formats, auto-uploads to Shopify. Products with no recoverable images get auto-drafted so they stop hurting you.</p>
+        </div>
+
+        <!-- 5. Smart Collection Builder -->
+        <div class="shopify-card">
+          <div class="shopify-card-number">05</div>
+          <h3 class="shopify-card-title">Smart Collection Builder</h3>
+          <p class="shopify-card-problem">Collections are random &mdash; some empty, some with 5 items, some with 200. No strategy.</p>
+          <p class="shopify-card-solution">AI-powered collection generator with marketing-driven templates. Audits existing collections, removes empties, detects unfocused groupings, and builds curated collections that drive sales.</p>
+        </div>
+
+        <!-- 6. Product Enrichment Pipeline -->
+        <div class="shopify-card">
+          <div class="shopify-card-number">06</div>
+          <h3 class="shopify-card-title">Product Enrichment Pipeline</h3>
+          <p class="shopify-card-problem">Your product data is shallow &mdash; generic descriptions, missing specs, can&rsquo;t compete with vendors who have rich pages.</p>
+          <p class="shopify-card-solution">Two-phase enrichment: crawls vendor sites for specs (dimensions, materials, fire ratings), then generates AI-powered descriptions. Backfills every field Shopify supports.</p>
+        </div>
+      </div>
+
+      <div class="shopify-cta-row">
+        <a href="#inquiry" class="shopify-cta-btn">Get Your Store Audit &rarr;</a>
+        <p class="shopify-cta-note">Free initial audit &mdash; see exactly what&rsquo;s broken before you spend a dime.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CREDIBILITY -->
+  <section class="credibility" id="platforms">
+    <div class="container">
+      <p class="credibility-label">TRUSTED ON</p>
+      <div class="credibility-row">
+        <div class="credibility-item">
+          <p class="credibility-name">TopTal</p>
+          <p class="credibility-sub">TOP 3% TALENT</p>
+        </div>
+        <div class="credibility-item">
+          <p class="credibility-name">Braintrust</p>
+          <p class="credibility-sub">VERIFIED EXPERT</p>
+        </div>
+        <div class="credibility-item">
+          <p class="credibility-name">Storetasker</p>
+          <p class="credibility-sub">SHOPIFY EXPERT</p>
+        </div>
+        <div class="credibility-item">
+          <p class="credibility-name">GitHub</p>
+          <p class="credibility-sub">OPEN SOURCE</p>
+        </div>
+        <div class="credibility-item">
+          <p class="credibility-name">Stack Overflow</p>
+          <p class="credibility-sub">COMMUNITY</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <p class="section-label">HOW I CAN HELP</p>
+      <h2 class="section-title">Services</h2>
+
+      <div class="services-grid">
+        <!-- Sprint -->
+        <div class="service-card light">
+          <p class="service-type">SPRINT (1-2 WEEKS)</p>
+          <h3 class="service-title">Rapid Build</h3>
+          <p class="service-subtitle">Fast turnaround on focused deliverables</p>
+          <ul class="service-list">
+            <li>
+              <span class="check-icon green"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
+              Landing pages & marketing sites
+            </li>
+            <li>
+              <span class="check-icon green"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
+              Shopify store setup & customization
+            </li>
+            <li>
+              <span class="check-icon green"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
+              API integrations & webhooks
+            </li>
+            <li>
+              <span class="check-icon green"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
+              Bug fixes & performance tuning
+            </li>
+          </ul>
+        </div>
+
+        <!-- Full Build (Popular) -->
+        <div class="service-card dark">
+          <span class="service-badge">POPULAR</span>
+          <p class="service-type">FULL BUILD (4-8 WEEKS)</p>
+          <h3 class="service-title">Complete Product</h3>
+          <p class="service-subtitle">End-to-end application development</p>
+          <ul class="service-list">
+            <li>
+              <span class="check-icon brass"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
+              Full-stack web applications
+            </li>
+            <li>
+              <span class="check-icon brass"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
+              Database architecture & API design
+            </li>
+            <li>
+              <span class="check-icon brass"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
+              Production deployment & DevOps
+            </li>
+            <li>
+              <span class="check-icon brass"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
+              3D / WebGL interactive experiences
+            </li>
+            <li>
+              <span class="check-icon brass"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
+              30 days post-launch support
+            </li>
+          </ul>
+        </div>
+
+        <!-- AI + Automation -->
+        <div class="service-card black">
+          <p class="service-type" style="color: var(--terracotta);">AI + AUTOMATION (ONGOING)</p>
+          <h3 class="service-title">AI Systems</h3>
+          <p class="service-subtitle">Intelligent automation that scales</p>
+          <ul class="service-list">
+            <li>
+              <span class="check-icon terra"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
+              Claude / LLM agent development
+            </li>
+            <li>
+              <span class="check-icon terra"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
+              MCP server architecture
+            </li>
+            <li>
+              <span class="check-icon terra"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
+              Web scraping & data pipelines
+            </li>
+            <li>
+              <span class="check-icon terra"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
+              Workflow automation & orchestration
+            </li>
+            <li>
+              <span class="check-icon terra"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
+              AI cost optimization & monitoring
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INQUIRY FORM -->
+  <section class="inquiry" id="inquiry">
+    <div class="container">
+      <div class="inquiry-inner">
+        <div class="inquiry-info">
+          <p class="section-label">GET IN TOUCH</p>
+          <h3>Let's Build<br />Something</h3>
+          <p>
+            Have a project in mind? Whether it's a full-stack application, an AI automation pipeline,
+            or a Shopify build &mdash; I'd like to hear about it.
+          </p>
+          <div class="inquiry-detail">
+            <div class="inquiry-detail-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <p class="inquiry-detail-label">RESPONSE TIME</p>
+              <p class="inquiry-detail-value">Within 24 hours</p>
+            </div>
+          </div>
+          <div class="inquiry-detail">
+            <div class="inquiry-detail-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <div>
+              <p class="inquiry-detail-label">AVAILABILITY</p>
+              <p class="inquiry-detail-value">Remote worldwide</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="inquiry-form-card">
+          <form action="https://formspree.io/f/placeholder" method="POST">
+            <div class="form-group">
+              <label class="form-label" for="name">YOUR NAME</label>
+              <input type="text" id="name" name="name" class="form-input" placeholder="Full name" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">EMAIL</label>
+              <input type="email" id="email" name="email" class="form-input" placeholder="you@company.com" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="project_type">PROJECT TYPE</label>
+              <select id="project_type" name="project_type" class="form-select" required>
+                <option value="" disabled selected>Select a project type</option>
+                <option value="full-stack">Full Stack App</option>
+                <option value="ecommerce">E-Commerce</option>
+                <option value="ai-automation">AI Automation</option>
+                <option value="consulting">Consulting</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="budget">BUDGET RANGE</label>
+              <select id="budget" name="budget" class="form-select" required>
+                <option value="" disabled selected>Select a budget range</option>
+                <option value="1k-5k">$1k - $5k</option>
+                <option value="5k-15k">$5k - $15k</option>
+                <option value="15k-50k">$15k - $50k</option>
+                <option value="50k+">$50k+</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="details">PROJECT DETAILS</label>
+              <textarea id="details" name="details" class="form-textarea" placeholder="Tell me about your project..." rows="4"></textarea>
+            </div>
+            <button type="submit" class="form-submit">Send Inquiry</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">
+          <div class="footer-logo-circle">A</div>
+          <span class="footer-logo-text">AGENT ABRAMS</span>
+        </div>
+        <div class="footer-links">
+          <!-- GitHub -->
+          <a href="https://github.com/AgentAbrams" target="_blank" rel="noopener" class="footer-social-link" aria-label="GitHub">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.21.08 1.85 1.24 1.85 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.02 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58C20.56 21.8 24 17.3 24 12 24 5.37 18.63 0 12 0z"/></svg>
+          </a>
+          <!-- Twitter/X -->
+          <a href="https://x.com/agentabrams" target="_blank" rel="noopener" class="footer-social-link" aria-label="Twitter">
+            <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <!-- Instagram -->
+          <a href="https://instagram.com/agentabrams" target="_blank" rel="noopener" class="footer-social-link" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          </a>
+          <!-- Stack Overflow -->
+          <a href="https://stackoverflow.com" target="_blank" rel="noopener" class="footer-social-link" aria-label="Stack Overflow">
+            <svg viewBox="0 0 24 24"><path d="M15.725 0l-1.72 1.277 6.39 8.588 1.716-1.277L15.725 0zm-3.94 3.418l-1.369 1.644 8.225 6.85 1.369-1.644-8.225-6.85zm-3.15 4.465l-.905 1.94 9.702 4.517.904-1.94-9.701-4.517zm-1.85 4.86l-.44 2.093 10.473 2.201.44-2.092-10.473-2.203zM1.89 15.47V24h19.19v-8.53h-2.133v6.397H4.021v-6.396H1.89zm4.265 2.133v2.13h10.66v-2.13H6.154z"/></svg>
+          </a>
+        </div>
+        <div class="footer-right">
+          <a href="https://goodquestion.ai">goodquestion.ai</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile nav toggle styles (injected via script to avoid is:global issues) -->
+  <style>
+    .nav-links.mobile-open {
+      display: flex !important;
+      flex-direction: column;
+      position: absolute;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: rgba(245, 240, 235, 0.98);
+      backdrop-filter: blur(12px);
+      padding: 24px;
+      gap: 16px;
+      border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    }
+
+    @media (min-width: 769px) {
+      .nav-links.mobile-open {
+        display: flex !important;
+        flex-direction: row;
+        position: static;
+        background: none;
+        backdrop-filter: none;
+        padding: 0;
+        gap: 32px;
+        border-bottom: none;
+        box-shadow: none;
+      }
+    }
+  </style>
+
+</body>
+</html>
