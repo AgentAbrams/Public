@@ -30,7 +30,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet" />
 
   <style>
     /* =========================================
@@ -39,17 +39,16 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #F5F0EB;
-      --forest: #2C3E2D;
-      --brass: #C9A96E;
-      --text: #1A1A18;
-      --text-secondary: #6B6560;
-      --terracotta: #D4613A;
+      --bg: #0A0A0A;
+      --text: #FFFFFF;
+      --text-secondary: #777777;
+      --brass: #E85D26;
       --white: #FFFFFF;
-      --black: #111110;
+      --black: #0A0A0A;
+      --card-bg: #111111;
+      --card-border: #1A1A1A;
       --display: 'Playfair Display', serif;
       --body: 'DM Sans', sans-serif;
-      --accent-serif: 'Cormorant Garamond', serif;
     }
 
     /* =========================================
@@ -60,7 +59,7 @@
       top: -100%;
       left: 16px;
       z-index: 10000;
-      background: var(--forest);
+      background: var(--brass);
       color: var(--white);
       font-family: var(--body);
       font-weight: 600;
@@ -71,9 +70,7 @@
       transition: top 0.2s;
     }
 
-    .skip-nav:focus {
-      top: 0;
-    }
+    .skip-nav:focus { top: 0; }
 
     html {
       scroll-behavior: smooth;
@@ -114,19 +111,6 @@
       overflow-x: hidden;
     }
 
-    /* Grain texture overlay */
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      pointer-events: none;
-      z-index: 9999;
-      opacity: 0.035;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-      background-repeat: repeat;
-      background-size: 180px 180px;
-    }
-
     a { text-decoration: none; color: inherit; }
     ul, ol { list-style: none; }
     img { max-width: 100%; display: block; }
@@ -139,13 +123,13 @@
     }
 
     .section-label {
-      font-family: var(--accent-serif);
-      font-style: italic;
-      font-weight: 400;
+      font-family: var(--body);
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
       color: var(--brass);
-      font-size: 0.95rem;
-      letter-spacing: 0.06em;
       margin-bottom: 8px;
+      text-transform: uppercase;
     }
 
     .section-title {
@@ -164,10 +148,10 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 1000;
-      background: rgba(245, 240, 235, 0.92);
+      background: rgba(10, 10, 10, 0.92);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+      border-bottom: 1px solid var(--card-border);
       padding: 0 24px;
     }
 
@@ -190,11 +174,11 @@
       width: 38px;
       height: 38px;
       border-radius: 50%;
-      background: var(--forest);
+      background: var(--brass);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--brass);
+      color: var(--white);
       font-family: var(--display);
       font-weight: 900;
       font-size: 1.15rem;
@@ -227,13 +211,13 @@
       align-items: center;
     }
 
-    .nav-link:hover { color: var(--forest); }
+    .nav-link:hover { color: var(--white); }
 
     .nav-link:focus-visible {
-      outline: 3px solid var(--forest);
+      outline: 3px solid var(--brass);
       outline-offset: 2px;
       border-radius: 4px;
-      color: var(--forest);
+      color: var(--white);
     }
 
     .nav-cta {
@@ -242,7 +226,7 @@
       font-size: 0.875rem;
       letter-spacing: 0.08em;
       color: var(--white);
-      background: var(--forest);
+      background: var(--brass);
       padding: 12px 24px;
       min-height: 44px;
       border-radius: 6px;
@@ -253,10 +237,10 @@
       align-items: center;
     }
 
-    .nav-cta:hover { background: #1e2d1f; transform: translateY(-1px); }
+    .nav-cta:hover { background: #D04F1C; transform: translateY(-1px); }
 
     .nav-cta:focus-visible {
-      outline: 3px solid var(--brass);
+      outline: 3px solid var(--white);
       outline-offset: 2px;
     }
 
@@ -277,7 +261,7 @@
     }
 
     .nav-hamburger:focus-visible {
-      outline: 3px solid var(--forest);
+      outline: 3px solid var(--brass);
       outline-offset: 2px;
     }
 
@@ -310,12 +294,11 @@
     }
 
     .hero-label {
-      font-family: var(--accent-serif);
-      font-style: italic;
-      font-weight: 400;
+      font-family: var(--body);
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
       color: var(--brass);
-      font-size: 1.05rem;
-      letter-spacing: 0.06em;
       margin-bottom: 16px;
     }
 
@@ -325,9 +308,10 @@
       font-size: 5.5rem;
       line-height: 1.02;
       margin-bottom: 28px;
+      color: var(--text);
     }
 
-    .hero-title .green { color: var(--forest); }
+    .hero-title .accent { color: var(--brass); }
 
     .hero-subtitle {
       font-family: var(--body);
@@ -361,12 +345,12 @@
       transition: all 0.3s;
     }
 
-    .btn-green {
-      background: var(--forest);
+    .btn-primary {
+      background: var(--brass);
       color: var(--white);
     }
 
-    .btn-green:hover { background: #1e2d1f; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(44,62,45,0.25); }
+    .btn-primary:hover { background: #D04F1C; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,93,38,0.25); }
 
     .btn-solid:focus-visible {
       outline: 3px solid var(--brass);
@@ -390,6 +374,8 @@
       height: 380px;
       border-radius: 16px;
       overflow: hidden;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
     }
     #hero-canvas {
       width: 100%;
@@ -405,7 +391,7 @@
       text-align: center;
       font-family: var(--body);
       font-size: 0.72rem;
-      color: var(--stone);
+      color: var(--text-secondary);
       letter-spacing: 0.04em;
       opacity: 0.5;
     }
@@ -415,61 +401,23 @@
       gap: 32px;
       margin-top: 24px;
       padding-top: 16px;
-      border-top: 1px solid rgba(44,62,45,0.12);
+      border-top: 1px solid var(--card-border);
     }
     .hero-stat { display: flex; flex-direction: column; }
     .hero-stat-num {
       font-family: var(--display);
       font-weight: 900;
       font-size: 1.8rem;
-      color: var(--forest);
+      color: var(--brass);
       line-height: 1;
     }
     .hero-stat-label {
       font-family: var(--body);
       font-size: 0.78rem;
-      color: var(--stone);
+      color: var(--text-secondary);
       letter-spacing: 0.06em;
       text-transform: uppercase;
       margin-top: 4px;
-    }
-
-    /* 3D Decorative elements */
-    .hero-decor {
-      position: absolute;
-      pointer-events: none;
-    }
-
-    .decor-square {
-      width: 80px;
-      height: 80px;
-      border: 1.5px solid var(--brass);
-      position: absolute;
-      opacity: 0.18;
-    }
-
-    .decor-square-1 {
-      top: 120px; right: 60px;
-      transform: rotate(35deg);
-    }
-
-    .decor-square-2 {
-      bottom: 40px; right: 180px;
-      width: 50px; height: 50px;
-      transform: rotate(55deg);
-      opacity: 0.12;
-    }
-
-    .decor-circles {
-      position: absolute;
-      top: 80px; left: -40px;
-      opacity: 0.08;
-    }
-
-    .decor-circles circle {
-      fill: none;
-      stroke: var(--brass);
-      stroke-width: 1;
     }
 
     /* =========================================
@@ -483,42 +431,24 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
-      margin-top: 48px;
+      margin-top: 40px;
     }
 
     .skill-card {
-      background: var(--white);
+      background: var(--card-bg);
       border-radius: 14px;
       padding: 36px 30px;
       transition: transform 0.3s, box-shadow 0.3s;
       cursor: default;
       position: relative;
       overflow: hidden;
-      border: 1px solid rgba(0,0,0,0.04);
+      border: 1px solid var(--card-border);
     }
 
     .skill-card:hover {
-      transform: perspective(600px) rotateY(-3deg) translateY(-4px);
-      box-shadow: 12px 12px 40px rgba(0,0,0,0.08);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
     }
-
-    .skill-card.dark {
-      background: var(--forest);
-      color: var(--white);
-      border-color: transparent;
-    }
-
-    .skill-card.dark .skill-techs { color: rgba(255,255,255,0.85); }
-    .skill-card.dark .skill-title { color: var(--white); }
-
-    .skill-card.black {
-      background: var(--black);
-      color: var(--white);
-      border-color: transparent;
-    }
-
-    .skill-card.black .skill-techs { color: rgba(255,255,255,0.82); }
-    .skill-card.black .skill-title { color: var(--white); }
 
     .skill-icon {
       width: 48px;
@@ -529,13 +459,9 @@
       justify-content: center;
       margin-bottom: 20px;
       font-size: 1.3rem;
+      background: rgba(232, 93, 38, 0.1);
+      color: var(--brass);
     }
-
-    .skill-icon.green-bg { background: rgba(44, 62, 45, 0.1); color: var(--forest); }
-    .skill-icon.brass-bg { background: rgba(201, 169, 110, 0.15); color: var(--brass); }
-    .skill-icon.terra-bg { background: rgba(212, 97, 58, 0.12); color: var(--terracotta); }
-    .skill-icon.white-bg { background: rgba(255,255,255,0.12); color: var(--white); }
-    .skill-icon.brass-light-bg { background: rgba(201, 169, 110, 0.12); color: var(--brass); }
 
     .skill-title {
       font-family: var(--display);
@@ -560,12 +486,8 @@
       right: 30px;
       height: 3px;
       border-radius: 2px;
+      background: var(--brass);
     }
-
-    .skill-bar.brass { background: var(--brass); }
-    .skill-bar.green { background: var(--forest); }
-    .skill-bar.terra { background: var(--terracotta); }
-    .skill-bar.white-bar { background: rgba(255,255,255,0.3); }
 
     /* =========================================
        PROJECTS
@@ -579,18 +501,19 @@
       grid-template-columns: 1fr 1fr;
       border-radius: 16px;
       overflow: hidden;
-      margin-top: 48px;
+      margin-top: 40px;
       min-height: 380px;
       transition: transform 0.3s, box-shadow 0.3s;
+      border: 1px solid var(--card-border);
     }
 
     .project-featured:hover {
-      transform: perspective(800px) rotateY(-1.5deg) translateY(-4px);
-      box-shadow: 16px 16px 48px rgba(0,0,0,0.1);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.4);
     }
 
     .project-featured-content {
-      background: var(--forest);
+      background: var(--card-bg);
       color: var(--white);
       padding: 48px 40px;
       display: flex;
@@ -599,7 +522,7 @@
     }
 
     .project-featured-visual {
-      background: var(--black);
+      background: #0D0D0D;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -625,13 +548,8 @@
       letter-spacing: 0.05em;
       padding: 5px 12px;
       border-radius: 16px;
-      background: rgba(201, 169, 110, 0.18);
+      background: rgba(232, 93, 38, 0.12);
       color: var(--brass);
-    }
-
-    .project-tag.dark-tag {
-      background: rgba(255,255,255,0.12);
-      color: rgba(255,255,255,0.9);
     }
 
     .project-title {
@@ -639,6 +557,7 @@
       font-weight: 900;
       font-size: 2rem;
       margin-bottom: 12px;
+      color: var(--white);
     }
 
     .project-desc {
@@ -646,7 +565,7 @@
       font-weight: 400;
       font-size: 0.95rem;
       line-height: 1.7;
-      color: rgba(255,255,255,0.88);
+      color: var(--text-secondary);
       margin-bottom: 20px;
     }
 
@@ -677,47 +596,37 @@
     }
 
     .project-card {
+      background: var(--card-bg);
       border-radius: 14px;
       padding: 36px 30px;
       transition: transform 0.3s, box-shadow 0.3s;
       cursor: default;
       position: relative;
-      border: 1px solid rgba(0,0,0,0.04);
+      border: 1px solid var(--card-border);
     }
 
     .project-card:hover {
-      transform: perspective(600px) rotateY(-2deg) translateY(-4px);
-      box-shadow: 12px 12px 40px rgba(0,0,0,0.08);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
     }
-
-    .project-card.light { background: var(--white); }
-    .project-card.dark { background: var(--forest); color: var(--white); border-color: transparent; }
-    .project-card.dark .project-desc { color: rgba(255,255,255,0.85); }
-    .project-card.black { background: var(--black); color: var(--white); border-color: transparent; }
-    .project-card.black .project-desc { color: rgba(255,255,255,0.82); }
-    .project-card.light .project-desc { color: var(--text-secondary); }
-    .project-card.light .project-title { color: var(--text); }
 
     /* =========================================
        CLAUDE CODE SECTION
        ========================================= */
     .claude-section {
       padding: 60px 0;
-      background: var(--forest);
-      color: var(--white);
       position: relative;
+      border-top: 1px solid var(--card-border);
     }
-
-    .claude-section .section-title { color: var(--white); }
 
     .claude-desc {
       font-family: var(--body);
       font-weight: 400;
       font-size: 1.05rem;
       line-height: 1.7;
-      color: rgba(255,255,255,0.88);
+      color: var(--text-secondary);
       max-width: 640px;
-      margin-bottom: 48px;
+      margin-bottom: 40px;
     }
 
     .claude-grid {
@@ -727,52 +636,27 @@
     }
 
     .claude-card {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(201, 169, 110, 0.12);
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
       border-radius: 14px;
-      padding: 32px 26px;
-      transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .claude-card:hover {
-      background: rgba(255,255,255,0.1);
-      transform: perspective(600px) rotateY(-2deg) translateY(-4px);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
     }
 
-    .claude-card-graphic {
+    .claude-card-image {
       width: 100%;
-      margin-bottom: 16px;
-      border-radius: 10px;
-      overflow: hidden;
-      background: rgba(0,0,0,0.08);
-      padding: 8px 0;
+      height: 200px;
+      object-fit: cover;
+      display: block;
     }
 
-    .claude-card-graphic svg {
-      width: 100%;
-      height: auto;
-    }
-
-    .claude-card-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 12px;
-      background: rgba(201, 169, 110, 0.12);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
-    }
-
-    .claude-card-icon svg {
-      width: 26px;
-      height: 26px;
-      stroke: var(--brass);
-      fill: none;
-      stroke-width: 1.5;
-      stroke-linecap: round;
-      stroke-linejoin: round;
+    .claude-card-body {
+      padding: 24px 26px;
     }
 
     .claude-card-title {
@@ -788,7 +672,7 @@
       font-weight: 400;
       font-size: 0.9rem;
       line-height: 1.65;
-      color: rgba(255,255,255,0.85);
+      color: var(--text-secondary);
     }
 
     /* =========================================
@@ -796,8 +680,8 @@
        ========================================= */
     .tools-bar {
       padding: 60px 0;
-      border-top: 1px solid rgba(201, 169, 110, 0.15);
-      border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+      border-top: 1px solid var(--card-border);
+      border-bottom: 1px solid var(--card-border);
     }
 
     .tools-inner {
@@ -832,8 +716,8 @@
        ========================================= */
     .shopify-section {
       padding: 60px 0;
-      background: linear-gradient(180deg, var(--bg) 0%, #EDE7DF 100%);
       position: relative;
+      border-top: 1px solid var(--card-border);
     }
 
     .shopify-section::before {
@@ -842,8 +726,8 @@
       top: 0;
       left: 0;
       right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--terracotta), var(--brass), var(--forest));
+      height: 3px;
+      background: var(--brass);
     }
 
     .shopify-lead {
@@ -853,36 +737,35 @@
       line-height: 1.75;
       color: var(--text-secondary);
       max-width: 680px;
-      margin-bottom: 56px;
+      margin-bottom: 40px;
     }
 
     .shopify-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
-      margin-bottom: 56px;
+      margin-bottom: 40px;
     }
 
     .shopify-card {
-      background: var(--white);
+      background: var(--card-bg);
       border-radius: 16px;
       padding: 36px 30px;
-      border: 1px solid rgba(0,0,0,0.04);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+      border: 1px solid var(--card-border);
       transition: transform 0.3s, box-shadow 0.3s;
       position: relative;
     }
 
     .shopify-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
     }
 
     .shopify-card-number {
       font-family: var(--display);
       font-weight: 900;
       font-size: 3rem;
-      color: rgba(212, 97, 58, 0.08);
+      color: rgba(232, 93, 38, 0.08);
       position: absolute;
       top: 16px;
       right: 24px;
@@ -898,15 +781,15 @@
     }
 
     .shopify-card-problem {
-      font-family: var(--accent-serif);
+      font-family: var(--body);
       font-style: italic;
       font-weight: 400;
       font-size: 0.95rem;
-      color: var(--terracotta);
+      color: var(--brass);
       margin-bottom: 14px;
       line-height: 1.5;
       padding-bottom: 14px;
-      border-bottom: 1px solid rgba(212, 97, 58, 0.12);
+      border-bottom: 1px solid rgba(232, 93, 38, 0.12);
     }
 
     .shopify-card-solution {
@@ -926,7 +809,7 @@
       align-items: center;
       padding: 18px 48px;
       min-height: 56px;
-      background: var(--terracotta);
+      background: var(--brass);
       color: var(--white);
       font-family: var(--body);
       font-weight: 600;
@@ -937,12 +820,12 @@
     }
 
     .shopify-cta-btn:hover {
-      background: #C0552F;
+      background: #D04F1C;
       transform: translateY(-2px);
     }
 
     .shopify-cta-btn:focus-visible {
-      outline: 3px solid var(--forest);
+      outline: 3px solid var(--white);
       outline-offset: 3px;
     }
 
@@ -958,8 +841,9 @@
        CREDIBILITY BAR
        ========================================= */
     .credibility {
-      padding: 72px 0;
+      padding: 60px 0;
       text-align: center;
+      border-top: 1px solid var(--card-border);
     }
 
     .credibility-label {
@@ -982,7 +866,7 @@
     .credibility-item {
       padding: 0 32px;
       text-align: center;
-      border-right: 1px solid var(--brass);
+      border-right: 1px solid var(--card-border);
     }
 
     .credibility-item:last-child { border-right: none; }
@@ -1014,25 +898,22 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
-      margin-top: 48px;
+      margin-top: 40px;
     }
 
     .service-card {
+      background: var(--card-bg);
       border-radius: 14px;
       padding: 40px 30px;
       position: relative;
       transition: transform 0.3s, box-shadow 0.3s;
-      border: 1px solid rgba(0,0,0,0.04);
+      border: 1px solid var(--card-border);
     }
 
     .service-card:hover {
       transform: translateY(-6px);
-      box-shadow: 12px 12px 40px rgba(0,0,0,0.1);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
     }
-
-    .service-card.light { background: var(--white); }
-    .service-card.dark { background: var(--forest); color: var(--white); border-color: transparent; }
-    .service-card.black { background: var(--black); color: var(--white); border-color: transparent; }
 
     .service-badge {
       position: absolute;
@@ -1062,11 +943,8 @@
       font-weight: 900;
       font-size: 1.6rem;
       margin-bottom: 6px;
+      color: var(--text);
     }
-
-    .service-card.light .service-title { color: var(--text); }
-    .service-card.dark .service-title { color: var(--white); }
-    .service-card.black .service-title { color: var(--white); }
 
     .service-subtitle {
       font-family: var(--body);
@@ -1075,9 +953,6 @@
       color: var(--text-secondary);
       margin-bottom: 24px;
     }
-
-    .service-card.dark .service-subtitle { color: rgba(255,255,255,0.82); }
-    .service-card.black .service-subtitle { color: rgba(255,255,255,0.82); }
 
     .service-list {
       display: flex;
@@ -1093,10 +968,8 @@
       align-items: flex-start;
       gap: 10px;
       line-height: 1.5;
+      color: rgba(255,255,255,0.9);
     }
-
-    .service-card.dark .service-list li { color: rgba(255,255,255,0.92); }
-    .service-card.black .service-list li { color: rgba(255,255,255,0.9); }
 
     .check-icon {
       flex-shrink: 0;
@@ -1107,12 +980,9 @@
       align-items: center;
       justify-content: center;
       margin-top: 2px;
+      background: rgba(232, 93, 38, 0.12);
+      color: var(--brass);
     }
-
-    .check-icon.green { background: rgba(44, 62, 45, 0.1); color: var(--forest); }
-    .check-icon.brass { background: rgba(201, 169, 110, 0.15); color: var(--brass); }
-    .check-icon.terra { background: rgba(212, 97, 58, 0.15); color: var(--terracotta); }
-    .check-icon.white-check { background: rgba(255,255,255,0.12); color: var(--white); }
 
     .check-svg { width: 10px; height: 10px; }
 
@@ -1121,6 +991,7 @@
        ========================================= */
     .inquiry {
       padding: 60px 0;
+      border-top: 1px solid var(--card-border);
     }
 
     .inquiry-inner {
@@ -1136,6 +1007,7 @@
       font-size: 2.8rem;
       line-height: 1.1;
       margin-bottom: 20px;
+      color: var(--text);
     }
 
     .inquiry-info p {
@@ -1158,7 +1030,7 @@
       width: 40px;
       height: 40px;
       border-radius: 10px;
-      background: rgba(44, 62, 45, 0.08);
+      background: rgba(232, 93, 38, 0.08);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1167,7 +1039,7 @@
     .inquiry-detail-icon svg {
       width: 18px;
       height: 18px;
-      stroke: var(--forest);
+      stroke: var(--brass);
       fill: none;
       stroke-width: 1.5;
     }
@@ -1188,17 +1060,10 @@
     }
 
     .inquiry-form-card {
-      background: var(--white);
+      background: var(--card-bg);
       border-radius: 16px;
       padding: 40px 36px;
-      border: 1px solid rgba(0,0,0,0.04);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.06);
-      transform: perspective(800px) rotateY(2deg);
-      transition: transform 0.4s;
-    }
-
-    .inquiry-form-card:hover {
-      transform: perspective(800px) rotateY(0deg);
+      border: 1px solid var(--card-border);
     }
 
     .form-group {
@@ -1220,7 +1085,7 @@
     .form-textarea {
       width: 100%;
       padding: 12px 16px;
-      border: 1.5px solid rgba(0,0,0,0.15);
+      border: 1.5px solid var(--card-border);
       border-radius: 8px;
       background: var(--bg);
       color: var(--text);
@@ -1236,15 +1101,15 @@
     .form-input:focus,
     .form-select:focus,
     .form-textarea:focus {
-      border-color: var(--forest);
-      box-shadow: 0 0 0 3px rgba(44, 62, 45, 0.15);
+      border-color: var(--brass);
+      box-shadow: 0 0 0 3px rgba(232, 93, 38, 0.15);
     }
 
     .form-input:focus-visible,
     .form-select:focus-visible,
     .form-textarea:focus-visible {
-      border-color: var(--forest);
-      box-shadow: 0 0 0 3px rgba(44, 62, 45, 0.2);
+      border-color: var(--brass);
+      box-shadow: 0 0 0 3px rgba(232, 93, 38, 0.2);
       outline: none;
     }
 
@@ -1255,7 +1120,7 @@
       width: 100%;
       padding: 14px 24px;
       min-height: 48px;
-      background: var(--forest);
+      background: var(--brass);
       color: var(--white);
       font-family: var(--body);
       font-weight: 600;
@@ -1268,13 +1133,13 @@
     }
 
     .form-submit:hover {
-      background: #1e2d1f;
+      background: #D04F1C;
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(44, 62, 45, 0.25);
+      box-shadow: 0 8px 24px rgba(232, 93, 38, 0.25);
     }
 
     .form-submit:focus-visible {
-      outline: 3px solid var(--brass);
+      outline: 3px solid var(--white);
       outline-offset: 2px;
     }
 
@@ -1284,14 +1149,7 @@
     .footer {
       padding: 40px 0 48px;
       position: relative;
-    }
-
-    .footer::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 24px; right: 24px;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--brass), transparent);
+      border-top: 1px solid var(--card-border);
     }
 
     .footer-inner {
@@ -1311,11 +1169,11 @@
       width: 32px;
       height: 32px;
       border-radius: 50%;
-      background: var(--forest);
+      background: var(--brass);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--brass);
+      color: var(--white);
       font-family: var(--display);
       font-weight: 900;
       font-size: 0.9rem;
@@ -1341,10 +1199,10 @@
       align-items: center;
     }
 
-    .footer-social-link:hover { color: var(--forest); }
+    .footer-social-link:hover { color: var(--brass); }
 
     .footer-social-link:focus-visible {
-      outline: 3px solid var(--forest);
+      outline: 3px solid var(--brass);
       outline-offset: 4px;
       border-radius: 4px;
     }
@@ -1356,7 +1214,7 @@
     }
 
     .nav-logo:focus-visible {
-      outline: 3px solid var(--forest);
+      outline: 3px solid var(--brass);
       outline-offset: 3px;
       border-radius: 4px;
     }
@@ -1369,12 +1227,12 @@
     }
 
     .footer-right a {
-      color: var(--forest);
+      color: var(--brass);
       font-weight: 500;
       transition: color 0.3s;
     }
 
-    .footer-right a:hover { color: var(--brass); }
+    .footer-right a:hover { color: var(--white); }
 
     /* =========================================
        RESPONSIVE
@@ -1414,18 +1272,14 @@
       .project-featured-visual { min-height: 200px; }
 
       .inquiry-inner { grid-template-columns: 1fr; gap: 40px; }
-      .inquiry-form-card { transform: none; }
-      .inquiry-form-card:hover { transform: none; }
 
       .credibility-row { flex-direction: column; gap: 20px; }
-      .credibility-item { border-right: none; border-bottom: 1px solid rgba(201, 169, 110, 0.2); padding: 12px 0; }
+      .credibility-item { border-right: none; border-bottom: 1px solid var(--card-border); padding: 12px 0; }
       .credibility-item:last-child { border-bottom: none; }
 
       .tools-inner { gap: 32px; }
 
       .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
-
-      .decor-square, .decor-circles { display: none; }
     }
 
     @media (max-width: 480px) {
@@ -1453,6 +1307,7 @@
       <div class="nav-links">
         <a href="#skills" class="nav-link">SKILLS</a>
         <a href="#projects" class="nav-link">PROJECTS</a>
+        <a href="#furnishings" class="nav-link">FURNISHINGS</a>
         <a href="#platforms" class="nav-link">PLATFORMS</a>
         <a href="#services" class="nav-link">SERVICES</a>
         <a href="#inquiry" class="nav-cta">INQUIRE</a>
@@ -1472,14 +1327,14 @@
         <div class="hero-content">
           <p class="hero-label">SENIOR FULL STACK DEVELOPER</p>
           <h1 class="hero-title">
-            Agent<br /><span class="green">Abrams</span>
+            Agent<br /><span class="accent">Abrams</span>
           </h1>
           <p class="hero-subtitle">
             I build production systems that replace entire dev teams. AI-powered automation,
             full-stack applications, and e-commerce platforms &mdash; shipped fast, built to last.
           </p>
           <div class="hero-ctas">
-            <a href="#projects" class="btn-solid btn-green">View Projects</a>
+            <a href="#projects" class="btn-solid btn-primary">View Projects</a>
             <a href="#inquiry" class="btn-solid btn-outline">Get In Touch</a>
           </div>
           <div class="hero-stats-row">
@@ -1506,62 +1361,62 @@
       <div class="skills-grid">
         <!-- 1. Frontend -->
         <div class="skill-card">
-          <div class="skill-icon green-bg">
+          <div class="skill-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
           </div>
           <h3 class="skill-title">Frontend</h3>
           <p class="skill-techs">React, Next.js, Vue, TypeScript, Tailwind CSS, Three.js, WebGL</p>
-          <div class="skill-bar brass"></div>
+          <div class="skill-bar"></div>
         </div>
 
-        <!-- 2. Backend (dark) -->
-        <div class="skill-card dark">
-          <div class="skill-icon white-bg">
+        <!-- 2. Backend -->
+        <div class="skill-card">
+          <div class="skill-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><line x1="4" y1="10" x2="20" y2="10"/><line x1="10" y1="4" x2="10" y2="20"/></svg>
           </div>
           <h3 class="skill-title">Backend</h3>
           <p class="skill-techs">Node.js, Python, PostgreSQL, REST APIs, GraphQL, Redis, AWS</p>
-          <div class="skill-bar white-bar"></div>
+          <div class="skill-bar"></div>
         </div>
 
         <!-- 3. AI / Automation -->
         <div class="skill-card">
-          <div class="skill-icon terra-bg">
+          <div class="skill-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
           </div>
           <h3 class="skill-title">AI / Automation</h3>
           <p class="skill-techs">Claude API, LLM pipelines, MCP servers, AI agents, web scraping</p>
-          <div class="skill-bar terra"></div>
+          <div class="skill-bar"></div>
         </div>
 
         <!-- 4. E-Commerce -->
         <div class="skill-card">
-          <div class="skill-icon brass-bg">
+          <div class="skill-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
           </div>
           <h3 class="skill-title">E-Commerce</h3>
           <p class="skill-techs">Shopify, Liquid, Storefront API, payment integration, product catalogs</p>
-          <div class="skill-bar brass"></div>
+          <div class="skill-bar"></div>
         </div>
 
         <!-- 5. DevOps -->
         <div class="skill-card">
-          <div class="skill-icon green-bg">
+          <div class="skill-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
           </div>
           <h3 class="skill-title">DevOps</h3>
           <p class="skill-techs">PM2, nginx, Docker, CI/CD, Linux server admin, monitoring</p>
-          <div class="skill-bar green"></div>
+          <div class="skill-bar"></div>
         </div>
 
-        <!-- 6. Web3 / Crypto (black) -->
-        <div class="skill-card black">
-          <div class="skill-icon brass-light-bg">
+        <!-- 6. Web3 / Crypto -->
+        <div class="skill-card">
+          <div class="skill-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
           </div>
           <h3 class="skill-title">Web3 / Crypto</h3>
           <p class="skill-techs">DeFi platforms, token systems, blockchain integration, trading bots</p>
-          <div class="skill-bar brass"></div>
+          <div class="skill-bar"></div>
         </div>
       </div>
     </div>
@@ -1586,7 +1441,7 @@
           <span class="project-link" style="opacity: 0.5; cursor: default;">Private Project</span>
         </div>
         <div class="project-featured-visual" aria-hidden="true">
-          <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="rgba(201,169,110,0.4)" stroke-width="1" aria-hidden="true">
+          <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="rgba(232,93,38,0.3)" stroke-width="1" aria-hidden="true">
             <rect x="20" y="20" width="80" height="80" rx="4" />
             <rect x="30" y="30" width="25" height="25" rx="2" />
             <rect x="65" y="30" width="25" height="25" rx="2" />
@@ -1598,22 +1453,22 @@
 
       <!-- Row 2 -->
       <div class="projects-row">
-        <div class="project-card light">
+        <div class="project-card">
           <div class="project-tags">
-            <span class="project-tag" style="background: rgba(44,62,45,0.08); color: var(--forest);">Crypto</span>
-            <span class="project-tag" style="background: rgba(44,62,45,0.08); color: var(--forest);">React</span>
-            <span class="project-tag" style="background: rgba(44,62,45,0.08); color: var(--forest);">AI</span>
+            <span class="project-tag">Crypto</span>
+            <span class="project-tag">React</span>
+            <span class="project-tag">AI</span>
           </div>
           <h3 class="project-title" style="margin-top: 12px;">CoinRotator</h3>
           <p class="project-desc">Crypto screener with trend analysis, AI-powered insights, custom alerts, and TradingView integration.</p>
-          <a href="https://coinrotator.app" target="_blank" rel="noopener" class="project-link" style="color: var(--forest);">coinrotator.app <span>&rarr;</span></a>
+          <a href="https://coinrotator.app" target="_blank" rel="noopener" class="project-link">coinrotator.app <span>&rarr;</span></a>
         </div>
 
-        <div class="project-card dark">
+        <div class="project-card">
           <div class="project-tags">
-            <span class="project-tag dark-tag">Health</span>
-            <span class="project-tag dark-tag">Marketplace</span>
-            <span class="project-tag dark-tag">Full Stack</span>
+            <span class="project-tag">Health</span>
+            <span class="project-tag">Marketplace</span>
+            <span class="project-tag">Full Stack</span>
           </div>
           <h3 class="project-title" style="margin-top: 12px;">Theta Health</h3>
           <p class="project-desc">Psychedelic-assisted therapy provider marketplace. Connecting patients with verified practitioners.</p>
@@ -1623,26 +1478,26 @@
 
       <!-- Row 3 -->
       <div class="projects-row">
-        <div class="project-card black">
+        <div class="project-card">
           <div class="project-tags">
-            <span class="project-tag dark-tag">NFT</span>
-            <span class="project-tag dark-tag">Web3</span>
-            <span class="project-tag dark-tag">Community</span>
+            <span class="project-tag">NFT</span>
+            <span class="project-tag">Web3</span>
+            <span class="project-tag">Community</span>
           </div>
           <h3 class="project-title" style="margin-top: 12px;">Crypto Design Club</h3>
           <p class="project-desc">An NFT and design community bridging creative professionals with blockchain technology.</p>
           <span class="project-link" style="opacity: 0.5; cursor: default;">Private Project</span>
         </div>
 
-        <div class="project-card light">
+        <div class="project-card">
           <div class="project-tags">
-            <span class="project-tag" style="background: rgba(212,97,58,0.1); color: var(--terracotta);">Travel</span>
-            <span class="project-tag" style="background: rgba(212,97,58,0.1); color: var(--terracotta);">Utility</span>
-            <span class="project-tag" style="background: rgba(212,97,58,0.1); color: var(--terracotta);">Data</span>
+            <span class="project-tag">Travel</span>
+            <span class="project-tag">Utility</span>
+            <span class="project-tag">Data</span>
           </div>
           <h3 class="project-title" style="margin-top: 12px;">Is Water Safe to Drink?</h3>
           <p class="project-desc">A travel utility providing global water quality data, safety ratings, and purification recommendations by country.</p>
-          <span class="project-link" style="opacity: 0.5; cursor: default; color: var(--forest);">Private Project</span>
+          <span class="project-link" style="opacity: 0.5; cursor: default;">Private Project</span>
         </div>
       </div>
     </div>
@@ -1661,301 +1516,103 @@
       <div class="claude-grid">
         <!-- 1. Color Search -->
         <div class="claude-card">
-          <div class="claude-card-graphic">
-            <svg viewBox="0 0 200 120" fill="none">
-              <circle cx="40" cy="50" r="18" fill="rgba(212,97,58,0.4)" />
-              <circle cx="72" cy="50" r="18" fill="rgba(201,169,110,0.4)" />
-              <circle cx="104" cy="50" r="18" fill="rgba(44,62,45,0.4)" />
-              <circle cx="136" cy="50" r="18" fill="rgba(107,101,96,0.3)" />
-              <circle cx="168" cy="50" r="18" fill="rgba(201,169,110,0.2)" />
-              <!-- Eyedropper -->
-              <rect x="80" y="75" width="40" height="30" rx="4" fill="rgba(26,26,24,0.15)" stroke="rgba(201,169,110,0.2)" stroke-width="1" />
-              <text x="100" y="94" text-anchor="middle" fill="rgba(201,169,110,0.7)" font-size="9" font-family="monospace">#C9A96E</text>
-              <!-- Match line -->
-              <path d="M100 105 L72 68" stroke="rgba(201,169,110,0.3)" stroke-width="1" stroke-dasharray="3 2" />
-              <circle cx="72" cy="50" r="22" stroke="rgba(201,169,110,0.5)" stroke-width="1.5" fill="none" />
-            </svg>
+          <img src="/images/tools/color-search.jpg" alt="Color Search tool screenshot" class="claude-card-image" loading="lazy" />
+          <div class="claude-card-body">
+            <h3 class="claude-card-title">Color Search</h3>
+            <p class="claude-card-desc">AI color matching across 2,500+ products. Extract hex from any image, find coordinating patterns instantly.</p>
           </div>
-          <h3 class="claude-card-title">Color Search</h3>
-          <p class="claude-card-desc">AI color matching across 2,500+ products. Extract hex from any image, find coordinating patterns instantly.</p>
         </div>
 
         <!-- 2. Coordinate Builder -->
         <div class="claude-card">
-          <div class="claude-card-graphic">
-            <svg viewBox="0 0 200 120" fill="none">
-              <!-- Board -->
-              <rect x="20" y="10" width="160" height="100" rx="6" fill="rgba(201,169,110,0.04)" stroke="rgba(201,169,110,0.12)" stroke-width="1" />
-              <!-- Fabric swatch 1 -->
-              <rect x="30" y="20" width="50" height="35" rx="3" fill="rgba(44,62,45,0.2)" stroke="rgba(44,62,45,0.3)" stroke-width="1" />
-              <rect x="35" y="25" width="16" height="3" rx="1.5" fill="rgba(255,255,255,0.12)" />
-              <rect x="35" y="31" width="12" height="3" rx="1.5" fill="rgba(255,255,255,0.08)" />
-              <!-- Fabric swatch 2 -->
-              <rect x="90" y="20" width="40" height="50" rx="3" fill="rgba(212,97,58,0.15)" stroke="rgba(212,97,58,0.25)" stroke-width="1" />
-              <!-- Trim sample -->
-              <rect x="140" y="20" width="30" height="25" rx="3" fill="rgba(201,169,110,0.15)" stroke="rgba(201,169,110,0.25)" stroke-width="1" />
-              <!-- Wallpaper swatch -->
-              <rect x="30" y="65" width="70" height="35" rx="3" fill="rgba(107,101,96,0.15)" stroke="rgba(107,101,96,0.2)" stroke-width="1" />
-              <!-- Pattern lines inside wallpaper -->
-              <line x1="35" y1="72" x2="95" y2="72" stroke="rgba(201,169,110,0.1)" stroke-width="1" />
-              <line x1="35" y1="80" x2="95" y2="80" stroke="rgba(201,169,110,0.08)" stroke-width="1" />
-              <line x1="35" y1="88" x2="95" y2="88" stroke="rgba(201,169,110,0.1)" stroke-width="1" />
-              <!-- Drag handle -->
-              <circle cx="140" cy="80" r="10" fill="rgba(201,169,110,0.12)" stroke="rgba(201,169,110,0.25)" stroke-width="1" stroke-dasharray="3 2" />
-              <path d="M136 80h8M140 76v8" stroke="rgba(201,169,110,0.4)" stroke-width="1.5" />
-            </svg>
+          <img src="/images/tools/coordinate-builder.jpg" alt="Coordinate Builder tool screenshot" class="claude-card-image" loading="lazy" />
+          <div class="claude-card-body">
+            <h3 class="claude-card-title">Coordinate Builder</h3>
+            <p class="claude-card-desc">Drag-and-drop room boards for design presentations. Combine wallcoverings, fabrics, and trims visually.</p>
           </div>
-          <h3 class="claude-card-title">Coordinate Builder</h3>
-          <p class="claude-card-desc">Drag-and-drop room boards for design presentations. Combine wallcoverings, fabrics, and trims visually.</p>
         </div>
 
-        <!-- 3. Art Museum Importer -->
+        <!-- 3. Paint Visualizer -->
         <div class="claude-card">
-          <div class="claude-card-graphic">
-            <svg viewBox="0 0 200 120" fill="none">
-              <!-- Museum frame -->
-              <rect x="55" y="10" width="90" height="70" rx="2" fill="rgba(201,169,110,0.06)" stroke="rgba(201,169,110,0.2)" stroke-width="2" />
-              <rect x="62" y="17" width="76" height="56" rx="1" fill="rgba(44,62,45,0.08)" />
-              <!-- Abstract art inside frame -->
-              <circle cx="85" cy="40" r="12" fill="rgba(212,97,58,0.2)" />
-              <rect x="102" y="30" width="20" height="25" rx="1" fill="rgba(44,62,45,0.15)" />
-              <path d="M70 60 L90 35 L110 55 L130 40 L130 65 L70 65Z" fill="rgba(201,169,110,0.12)" />
-              <!-- Museum pillar icon -->
-              <rect x="15" y="30" width="24" height="50" rx="2" fill="rgba(201,169,110,0.08)" stroke="rgba(201,169,110,0.15)" stroke-width="1" />
-              <rect x="15" y="25" width="24" height="8" rx="2" fill="rgba(201,169,110,0.1)" />
-              <line x1="21" y1="38" x2="21" y2="75" stroke="rgba(201,169,110,0.12)" stroke-width="2" />
-              <line x1="33" y1="38" x2="33" y2="75" stroke="rgba(201,169,110,0.12)" stroke-width="2" />
-              <!-- Arrow to product -->
-              <path d="M145 45h25" stroke="rgba(201,169,110,0.3)" stroke-width="1.5" stroke-dasharray="3 2" />
-              <polygon points="170,41 170,49 177,45" fill="rgba(201,169,110,0.3)" />
-              <!-- Product page mini -->
-              <rect x="155" y="85" width="30" height="25" rx="3" fill="rgba(44,62,45,0.12)" stroke="rgba(44,62,45,0.2)" stroke-width="1" />
-              <rect x="159" y="89" width="22" height="3" rx="1.5" fill="rgba(255,255,255,0.1)" />
-              <rect x="159" y="95" width="15" height="3" rx="1.5" fill="rgba(255,255,255,0.07)" />
-            </svg>
+          <img src="/images/tools/paint-visualizer.jpg" alt="Paint Visualizer tool screenshot" class="claude-card-image" loading="lazy" />
+          <div class="claude-card-body">
+            <h3 class="claude-card-title">Art Museum Importer</h3>
+            <p class="claude-card-desc">Met Museum pipeline. Imports curated artwork, generates product pages and room setting visualizations.</p>
           </div>
-          <h3 class="claude-card-title">Art Museum Importer</h3>
-          <p class="claude-card-desc">Met Museum pipeline. Imports curated artwork, generates product pages and room setting visualizations.</p>
         </div>
 
         <!-- 4. Room Setting Generator -->
         <div class="claude-card">
-          <div class="claude-card-graphic">
-            <svg viewBox="0 0 200 120" fill="none">
-              <!-- Room outline -->
-              <path d="M20 100 L20 30 L100 10 L180 30 L180 100Z" fill="rgba(201,169,110,0.04)" stroke="rgba(201,169,110,0.15)" stroke-width="1" />
-              <!-- Back wall -->
-              <rect x="40" y="25" width="120" height="55" fill="rgba(44,62,45,0.08)" stroke="rgba(44,62,45,0.12)" stroke-width="1" />
-              <!-- Wallpaper pattern on wall -->
-              <line x1="50" y1="30" x2="50" y2="75" stroke="rgba(44,62,45,0.06)" stroke-width="1" />
-              <line x1="70" y1="30" x2="70" y2="75" stroke="rgba(44,62,45,0.06)" stroke-width="1" />
-              <line x1="90" y1="30" x2="90" y2="75" stroke="rgba(44,62,45,0.06)" stroke-width="1" />
-              <line x1="110" y1="30" x2="110" y2="75" stroke="rgba(44,62,45,0.06)" stroke-width="1" />
-              <line x1="130" y1="30" x2="130" y2="75" stroke="rgba(44,62,45,0.06)" stroke-width="1" />
-              <line x1="150" y1="30" x2="150" y2="75" stroke="rgba(44,62,45,0.06)" stroke-width="1" />
-              <!-- Sofa -->
-              <rect x="55" y="80" width="90" height="20" rx="6" fill="rgba(107,101,96,0.2)" stroke="rgba(107,101,96,0.25)" stroke-width="1" />
-              <rect x="60" y="75" width="30" height="10" rx="4" fill="rgba(107,101,96,0.15)" />
-              <rect x="110" y="75" width="30" height="10" rx="4" fill="rgba(107,101,96,0.15)" />
-              <!-- Lamp -->
-              <line x1="165" y1="50" x2="165" y2="90" stroke="rgba(201,169,110,0.2)" stroke-width="2" />
-              <path d="M155 50 L175 50 L170 38 L160 38Z" fill="rgba(201,169,110,0.15)" stroke="rgba(201,169,110,0.2)" stroke-width="1" />
-              <!-- AI sparkle -->
-              <circle cx="35" cy="15" r="4" fill="rgba(212,97,58,0.3)" />
-              <path d="M35 8v14M28 15h14" stroke="rgba(212,97,58,0.2)" stroke-width="1" />
-            </svg>
+          <div class="claude-card-body">
+            <h3 class="claude-card-title">Room Setting Generator</h3>
+            <p class="claude-card-desc">AI-generated photorealistic room visualizations. Bedroom, living room, office &mdash; see wallpaper in context before buying.</p>
           </div>
-          <h3 class="claude-card-title">Room Setting Generator</h3>
-          <p class="claude-card-desc">AI-generated photorealistic room visualizations. Bedroom, living room, office &mdash; see wallpaper in context before buying.</p>
         </div>
 
         <!-- 5. 360 Spin Viewer -->
         <div class="claude-card">
-          <div class="claude-card-graphic">
-            <svg viewBox="0 0 200 120" fill="none">
-              <!-- Product cube (3D) -->
-              <path d="M100 20 L150 40 L150 85 L100 105 L50 85 L50 40Z" fill="rgba(44,62,45,0.08)" stroke="rgba(44,62,45,0.2)" stroke-width="1" />
-              <path d="M100 20 L150 40 L100 60 L50 40Z" fill="rgba(44,62,45,0.12)" />
-              <path d="M100 60 L150 40 L150 85 L100 105Z" fill="rgba(44,62,45,0.06)" />
-              <path d="M100 60 L50 40 L50 85 L100 105Z" fill="rgba(44,62,45,0.1)" />
-              <!-- Rotation arc -->
-              <path d="M160 55 A65 30 0 1 1 40 55" stroke="rgba(201,169,110,0.25)" stroke-width="1.5" fill="none" stroke-dasharray="4 3" />
-              <polygon points="37,50 37,60 30,55" fill="rgba(201,169,110,0.3)" />
-              <!-- 360 badge -->
-              <circle cx="168" cy="25" r="16" fill="rgba(44,62,45,0.15)" stroke="rgba(44,62,45,0.25)" stroke-width="1" />
-              <text x="168" y="28" text-anchor="middle" fill="rgba(44,62,45,0.6)" font-size="9" font-weight="700" font-family="DM Sans, sans-serif">360°</text>
-              <!-- Play indicator -->
-              <circle cx="100" cy="60" r="12" fill="rgba(212,97,58,0.15)" stroke="rgba(212,97,58,0.3)" stroke-width="1" />
-              <polygon points="96,55 96,65 106,60" fill="rgba(212,97,58,0.4)" />
-            </svg>
+          <div class="claude-card-body">
+            <h3 class="claude-card-title">360&deg; Spin Viewer</h3>
+            <p class="claude-card-desc">Interactive WebGL product viewer with smooth rotation. Customers spin products in any direction before purchasing.</p>
           </div>
-          <h3 class="claude-card-title">360° Spin Viewer</h3>
-          <p class="claude-card-desc">Interactive WebGL product viewer with smooth rotation. Customers spin products in any direction before purchasing.</p>
         </div>
 
         <!-- 6. Email-to-Social Pipeline -->
         <div class="claude-card">
-          <div class="claude-card-graphic">
-            <svg viewBox="0 0 200 120" fill="none">
-              <!-- Email icon -->
-              <rect x="15" y="35" width="45" height="32" rx="4" fill="rgba(44,62,45,0.12)" stroke="rgba(44,62,45,0.25)" stroke-width="1" />
-              <path d="M18 38 L37 52 L57 38" stroke="rgba(44,62,45,0.3)" stroke-width="1.5" fill="none" />
-              <text x="37" y="80" text-anchor="middle" fill="rgba(44,62,45,0.4)" font-size="8" font-family="DM Sans, sans-serif" font-weight="600">EMAIL</text>
-              <!-- Arrow 1 -->
-              <path d="M65 51h18" stroke="rgba(201,169,110,0.35)" stroke-width="1.5" />
-              <polygon points="83,47 83,55 90,51" fill="rgba(201,169,110,0.35)" />
-              <!-- Shopify bag -->
-              <rect x="93" y="35" width="35" height="32" rx="5" fill="rgba(201,169,110,0.12)" stroke="rgba(201,169,110,0.25)" stroke-width="1" />
-              <path d="M103 42 L103 38 A8 8 0 0 1 118 38 L118 42" stroke="rgba(201,169,110,0.3)" stroke-width="1.5" fill="none" />
-              <text x="110" y="80" text-anchor="middle" fill="rgba(201,169,110,0.4)" font-size="8" font-family="DM Sans, sans-serif" font-weight="600">SHOPIFY</text>
-              <!-- Arrow 2 -->
-              <path d="M133 51h18" stroke="rgba(201,169,110,0.35)" stroke-width="1.5" />
-              <polygon points="151,47 151,55 158,51" fill="rgba(201,169,110,0.35)" />
-              <!-- Social icons stack -->
-              <rect x="161" y="30" width="28" height="42" rx="5" fill="rgba(212,97,58,0.1)" stroke="rgba(212,97,58,0.2)" stroke-width="1" />
-              <circle cx="175" cy="40" r="5" fill="rgba(212,97,58,0.2)" />
-              <rect x="167" y="49" width="16" height="4" rx="2" fill="rgba(212,97,58,0.15)" />
-              <rect x="167" y="56" width="12" height="4" rx="2" fill="rgba(212,97,58,0.1)" />
-              <rect x="167" y="63" width="16" height="4" rx="2" fill="rgba(212,97,58,0.15)" />
-              <text x="175" y="86" text-anchor="middle" fill="rgba(212,97,58,0.4)" font-size="8" font-family="DM Sans, sans-serif" font-weight="600">SOCIAL</text>
-            </svg>
+          <div class="claude-card-body">
+            <h3 class="claude-card-title">Email &rarr; Shop &rarr; Social</h3>
+            <p class="claude-card-desc">Vendor email arrives &rarr; products auto-created in Shopify &rarr; social posts generated for Instagram, TikTok, LinkedIn.</p>
           </div>
-          <h3 class="claude-card-title">Email &rarr; Shop &rarr; Social</h3>
-          <p class="claude-card-desc">Vendor email arrives &rarr; products auto-created in Shopify &rarr; social posts generated for Instagram, TikTok, LinkedIn.</p>
         </div>
 
         <!-- 7. Content Sanitizer -->
         <div class="claude-card">
-          <div class="claude-card-graphic">
-            <svg viewBox="0 0 200 120" fill="none">
-              <rect x="20" y="10" width="160" height="100" rx="8" fill="rgba(201,169,110,0.06)" stroke="rgba(201,169,110,0.15)" stroke-width="1"/>
-              <rect x="36" y="28" width="80" height="6" rx="3" fill="rgba(255,255,255,0.15)"/>
-              <rect x="36" y="40" width="60" height="6" rx="3" fill="rgba(255,255,255,0.1)"/>
-              <rect x="36" y="52" width="90" height="6" rx="3" fill="rgba(212,97,58,0.3)"/>
-              <rect x="36" y="64" width="70" height="6" rx="3" fill="rgba(255,255,255,0.1)"/>
-              <rect x="36" y="76" width="85" height="6" rx="3" fill="rgba(255,255,255,0.15)"/>
-              <rect x="36" y="88" width="50" height="6" rx="3" fill="rgba(212,97,58,0.3)"/>
-              <path d="M140 45l12 12 24-24" stroke="#2C3E2D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-              <circle cx="155" cy="50" r="28" stroke="rgba(44,62,45,0.3)" stroke-width="1.5" fill="none" stroke-dasharray="4 3"/>
-            </svg>
+          <div class="claude-card-body">
+            <h3 class="claude-card-title">Content Sanitizer</h3>
+            <p class="claude-card-desc">200+ regex patterns across 8 security categories. Scans every blog post, video, and social update before publishing &mdash; zero data leaks across 5 channels.</p>
           </div>
-          <h3 class="claude-card-title">Content Sanitizer</h3>
-          <p class="claude-card-desc">200+ regex patterns across 8 security categories. Scans every blog post, video, and social update before publishing &mdash; zero data leaks across 5 channels.</p>
         </div>
 
         <!-- 8. Parallel Agent Orchestrator -->
         <div class="claude-card">
-          <div class="claude-card-graphic">
-            <svg viewBox="0 0 200 120" fill="none">
-              <circle cx="100" cy="60" r="14" fill="rgba(201,169,110,0.2)" stroke="#C9A96E" stroke-width="1.5"/>
-              <text x="100" y="65" text-anchor="middle" fill="#C9A96E" font-size="12" font-weight="700" font-family="Playfair Display, serif">74</text>
-              <circle cx="40" cy="25" r="8" fill="rgba(44,62,45,0.3)" stroke="rgba(44,62,45,0.5)" stroke-width="1"/>
-              <circle cx="160" cy="25" r="8" fill="rgba(44,62,45,0.3)" stroke="rgba(44,62,45,0.5)" stroke-width="1"/>
-              <circle cx="40" cy="95" r="8" fill="rgba(44,62,45,0.3)" stroke="rgba(44,62,45,0.5)" stroke-width="1"/>
-              <circle cx="160" cy="95" r="8" fill="rgba(44,62,45,0.3)" stroke="rgba(44,62,45,0.5)" stroke-width="1"/>
-              <circle cx="70" cy="30" r="6" fill="rgba(212,97,58,0.25)" stroke="rgba(212,97,58,0.4)" stroke-width="1"/>
-              <circle cx="130" cy="30" r="6" fill="rgba(212,97,58,0.25)" stroke="rgba(212,97,58,0.4)" stroke-width="1"/>
-              <circle cx="70" cy="90" r="6" fill="rgba(212,97,58,0.25)" stroke="rgba(212,97,58,0.4)" stroke-width="1"/>
-              <circle cx="130" cy="90" r="6" fill="rgba(212,97,58,0.25)" stroke="rgba(212,97,58,0.4)" stroke-width="1"/>
-              <line x1="48" y1="28" x2="87" y2="55" stroke="rgba(201,169,110,0.25)" stroke-width="1"/>
-              <line x1="152" y1="28" x2="113" y2="55" stroke="rgba(201,169,110,0.25)" stroke-width="1"/>
-              <line x1="48" y1="92" x2="87" y2="65" stroke="rgba(201,169,110,0.25)" stroke-width="1"/>
-              <line x1="152" y1="92" x2="113" y2="65" stroke="rgba(201,169,110,0.25)" stroke-width="1"/>
-              <line x1="75" y1="32" x2="90" y2="50" stroke="rgba(201,169,110,0.2)" stroke-width="1"/>
-              <line x1="125" y1="32" x2="110" y2="50" stroke="rgba(201,169,110,0.2)" stroke-width="1"/>
-            </svg>
+          <img src="/images/tools/blog-agent.jpg" alt="Blog Agent dashboard screenshot" class="claude-card-image" loading="lazy" />
+          <div class="claude-card-body">
+            <h3 class="claude-card-title">74-Agent Orchestrator</h3>
+            <p class="claude-card-desc">Manages 74 autonomous Node.js processes on a single VPS. Auto-restart, memory isolation, and failure containment &mdash; no cascading crashes.</p>
           </div>
-          <h3 class="claude-card-title">74-Agent Orchestrator</h3>
-          <p class="claude-card-desc">Manages 74 autonomous Node.js processes on a single VPS. Auto-restart, memory isolation, and failure containment &mdash; no cascading crashes.</p>
         </div>
 
         <!-- 9. Auto-Publishing Pipeline -->
         <div class="claude-card">
-          <div class="claude-card-graphic">
-            <svg viewBox="0 0 200 120" fill="none">
-              <rect x="15" y="35" width="40" height="50" rx="6" fill="rgba(201,169,110,0.1)" stroke="rgba(201,169,110,0.2)" stroke-width="1"/>
-              <rect x="20" y="62" width="30" height="3" rx="1.5" fill="rgba(255,255,255,0.12)"/>
-              <rect x="20" y="68" width="22" height="3" rx="1.5" fill="rgba(255,255,255,0.08)"/>
-              <path d="M60 60h25" stroke="rgba(201,169,110,0.4)" stroke-width="1.5" stroke-dasharray="3 2"/>
-              <polygon points="85,56 85,64 92,60" fill="rgba(201,169,110,0.4)"/>
-              <rect x="95" y="42" width="30" height="36" rx="5" fill="rgba(44,62,45,0.2)" stroke="rgba(44,62,45,0.35)" stroke-width="1"/>
-              <path d="M130 60h20" stroke="rgba(201,169,110,0.4)" stroke-width="1.5" stroke-dasharray="3 2"/>
-              <polygon points="150,56 150,64 157,60" fill="rgba(201,169,110,0.4)"/>
-              <circle cx="172" cy="40" r="12" fill="rgba(212,97,58,0.15)" stroke="rgba(212,97,58,0.3)" stroke-width="1"/>
-              <text x="172" y="43" text-anchor="middle" fill="rgba(212,97,58,0.7)" font-size="7" font-family="DM Sans, sans-serif" font-weight="600">X</text>
-              <circle cx="172" cy="65" r="12" fill="rgba(44,62,45,0.15)" stroke="rgba(44,62,45,0.3)" stroke-width="1"/>
-              <text x="172" y="68" text-anchor="middle" fill="rgba(44,62,45,0.7)" font-size="7" font-family="DM Sans, sans-serif" font-weight="600">BS</text>
-              <circle cx="172" cy="90" r="12" fill="rgba(201,169,110,0.15)" stroke="rgba(201,169,110,0.3)" stroke-width="1"/>
-              <text x="172" y="93" text-anchor="middle" fill="rgba(201,169,110,0.7)" font-size="7" font-family="DM Sans, sans-serif" font-weight="600">YT</text>
-            </svg>
+          <div class="claude-card-body">
+            <h3 class="claude-card-title">Auto-Publishing Pipeline</h3>
+            <p class="claude-card-desc">Generates blog content, sanitizes, publishes to Astro, posts to Twitter, Bluesky, and YouTube &mdash; every 2 hours, fully hands-off.</p>
           </div>
-          <h3 class="claude-card-title">Auto-Publishing Pipeline</h3>
-          <p class="claude-card-desc">Generates blog content, sanitizes, publishes to Astro, posts to Twitter, Bluesky, and YouTube &mdash; every 2 hours, fully hands-off.</p>
         </div>
 
         <!-- 10. Video Sanitizer -->
         <div class="claude-card">
-          <div class="claude-card-graphic">
-            <svg viewBox="0 0 200 120" fill="none">
-              <rect x="25" y="15" width="150" height="90" rx="8" fill="rgba(201,169,110,0.06)" stroke="rgba(201,169,110,0.15)" stroke-width="1"/>
-              <rect x="35" y="25" width="90" height="55" rx="4" fill="rgba(0,0,0,0.2)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-              <polygon points="70,42 70,62 88,52" fill="rgba(201,169,110,0.3)" stroke="rgba(201,169,110,0.5)" stroke-width="1"/>
-              <rect x="45" y="60" width="30" height="8" rx="2" fill="rgba(212,97,58,0.4)"/>
-              <rect x="135" y="30" width="30" height="20" rx="3" fill="rgba(44,62,45,0.2)" stroke="rgba(44,62,45,0.3)" stroke-width="1"/>
-              <rect x="135" y="55" width="30" height="20" rx="3" fill="rgba(212,97,58,0.15)" stroke="rgba(212,97,58,0.3)" stroke-width="1"/>
-              <path d="M125 40h8" stroke="rgba(201,169,110,0.3)" stroke-width="1"/>
-              <path d="M125 60h8" stroke="rgba(201,169,110,0.3)" stroke-width="1"/>
-            </svg>
+          <div class="claude-card-body">
+            <h3 class="claude-card-title">Video Sanitizer</h3>
+            <p class="claude-card-desc">OCR + OpenCV frame-by-frame scanning. Detects 214 sensitive patterns, auto-blurs them with Gaussian blur, re-verifies before YouTube upload.</p>
           </div>
-          <h3 class="claude-card-title">Video Sanitizer</h3>
-          <p class="claude-card-desc">OCR + OpenCV frame-by-frame scanning. Detects 214 sensitive patterns, auto-blurs them with Gaussian blur, re-verifies before YouTube upload.</p>
         </div>
 
         <!-- 11. Vendor Command Center -->
         <div class="claude-card">
-          <div class="claude-card-graphic">
-            <svg viewBox="0 0 200 120" fill="none">
-              <rect x="20" y="10" width="160" height="100" rx="8" fill="rgba(201,169,110,0.06)" stroke="rgba(201,169,110,0.15)" stroke-width="1"/>
-              <rect x="20" y="10" width="160" height="22" rx="8" fill="rgba(44,62,45,0.15)"/>
-              <rect x="20" y="24" width="160" height="2" fill="rgba(44,62,45,0.15)"/>
-              <circle cx="34" cy="21" r="4" fill="rgba(212,97,58,0.5)"/>
-              <circle cx="46" cy="21" r="4" fill="rgba(201,169,110,0.4)"/>
-              <circle cx="58" cy="21" r="4" fill="rgba(44,62,45,0.4)"/>
-              <rect x="30" y="40" width="62" height="28" rx="4" fill="rgba(44,62,45,0.12)" stroke="rgba(44,62,45,0.2)" stroke-width="1"/>
-              <rect x="108" y="40" width="62" height="28" rx="4" fill="rgba(212,97,58,0.1)" stroke="rgba(212,97,58,0.2)" stroke-width="1"/>
-              <rect x="35" y="46" width="30" height="4" rx="2" fill="rgba(44,62,45,0.3)"/>
-              <rect x="35" y="54" width="45" height="4" rx="2" fill="rgba(44,62,45,0.15)"/>
-              <rect x="113" y="46" width="35" height="4" rx="2" fill="rgba(212,97,58,0.3)"/>
-              <rect x="113" y="54" width="25" height="4" rx="2" fill="rgba(212,97,58,0.15)"/>
-              <rect x="30" y="76" width="140" height="6" rx="3" fill="rgba(201,169,110,0.1)"/>
-              <rect x="30" y="76" width="95" height="6" rx="3" fill="rgba(201,169,110,0.25)"/>
-              <rect x="30" y="88" width="140" height="6" rx="3" fill="rgba(201,169,110,0.1)"/>
-              <rect x="30" y="88" width="60" height="6" rx="3" fill="rgba(44,62,45,0.2)"/>
-            </svg>
+          <img src="/images/tools/vendor-command-center.jpg" alt="Vendor Command Center screenshot" class="claude-card-image" loading="lazy" />
+          <div class="claude-card-body">
+            <h3 class="claude-card-title">Vendor Command Center</h3>
+            <p class="claude-card-desc">Dashboard managing 50+ vendor catalog agents. Real-time health checks, cron schedules, SKU prefix assignment, and private label tracking.</p>
           </div>
-          <h3 class="claude-card-title">Vendor Command Center</h3>
-          <p class="claude-card-desc">Dashboard managing 50+ vendor catalog agents. Real-time health checks, cron schedules, SKU prefix assignment, and private label tracking.</p>
         </div>
 
         <!-- 12. Self-Healing Scraper -->
         <div class="claude-card">
-          <div class="claude-card-graphic">
-            <svg viewBox="0 0 200 120" fill="none">
-              <path d="M30 90 Q50 20 100 60 Q150 100 170 30" stroke="rgba(44,62,45,0.4)" stroke-width="2" fill="none"/>
-              <path d="M30 90 Q50 20 100 60 Q150 100 170 30" stroke="rgba(201,169,110,0.6)" stroke-width="2" fill="none" stroke-dasharray="6 4"/>
-              <circle cx="50" cy="48" r="5" fill="rgba(212,97,58,0.4)" stroke="rgba(212,97,58,0.6)" stroke-width="1"/>
-              <circle cx="80" cy="50" r="5" fill="rgba(212,97,58,0.4)" stroke="rgba(212,97,58,0.6)" stroke-width="1"/>
-              <circle cx="120" cy="75" r="5" fill="rgba(44,62,45,0.5)" stroke="rgba(44,62,45,0.7)" stroke-width="1"/>
-              <path d="M118 75l2 2 3-4" stroke="white" stroke-width="1" fill="none"/>
-              <circle cx="150" cy="50" r="5" fill="rgba(44,62,45,0.5)" stroke="rgba(44,62,45,0.7)" stroke-width="1"/>
-              <path d="M148 50l2 2 3-4" stroke="white" stroke-width="1" fill="none"/>
-              <text x="170" y="25" fill="rgba(201,169,110,0.5)" font-size="18" font-weight="900" font-family="Playfair Display, serif">10.7x</text>
-              <rect x="25" y="100" width="150" height="10" rx="5" fill="rgba(201,169,110,0.08)"/>
-              <rect x="25" y="100" width="110" height="10" rx="5" fill="rgba(44,62,45,0.15)"/>
-            </svg>
+          <div class="claude-card-body">
+            <h3 class="claude-card-title">Self-Healing Scraper</h3>
+            <p class="claude-card-desc">Cockroach architecture: per-record database commits, browser crash recovery, auto-resume from last checkpoint. Grew catalogs 10.7x without manual intervention.</p>
           </div>
-          <h3 class="claude-card-title">Self-Healing Scraper</h3>
-          <p class="claude-card-desc">Cockroach architecture: per-record database commits, browser crash recovery, auto-resume from last checkpoint. Grew catalogs 10.7x without manual intervention.</p>
         </div>
       </div>
     </div>
@@ -1984,7 +1641,7 @@
   <!-- SHOPIFY SOLUTIONS -->
   <section class="shopify-section" id="shopify">
     <div class="container">
-      <p class="section-label" style="color: var(--terracotta);">FOR SHOPIFY STORE OWNERS</p>
+      <p class="section-label">FOR SHOPIFY STORE OWNERS</p>
       <h2 class="section-title">Drowning in Product Data?</h2>
       <p class="shopify-lead">
         You have thousands of products, dozens of vendors, and not enough hours. These tools were built
@@ -2048,6 +1705,73 @@
     </div>
   </section>
 
+  <!-- HOME FURNISHINGS INDUSTRY -->
+  <section class="shopify-section" id="furnishings">
+    <div class="container">
+      <p class="section-label">INDUSTRY SOLUTIONS</p>
+      <h2 class="section-title">Home Furnishings &amp; Interior Design</h2>
+      <p class="shopify-lead">
+        Purpose-built tools for brands, wholesalers, and retailers in the home furnishings space.
+        Each one runs autonomously in production &mdash; built by one operator with Claude Code, replacing what typically requires an entire dev team.
+      </p>
+
+      <div class="shopify-grid">
+        <!-- 1. Swatch Spin Viewer -->
+        <div class="shopify-card">
+          <div class="shopify-card-number">01</div>
+          <h3 class="shopify-card-title">360&deg; Swatch Spin Engine</h3>
+          <p class="shopify-card-problem">Static product images don&rsquo;t sell fabric and material swatches &mdash; customers need to see texture.</p>
+          <p class="shopify-card-solution">Generates animated circular swatch GIFs at 2x internal resolution with Lanczos downscaling. Play-button overlay, smooth 180&deg; rotation, auto-uploads to Shopify. One command processes an entire vendor catalog.</p>
+        </div>
+
+        <!-- 2. Vendor Command Center -->
+        <div class="shopify-card">
+          <div class="shopify-card-number">02</div>
+          <h3 class="shopify-card-title">Vendor Command Center</h3>
+          <p class="shopify-card-problem">Managing 100+ suppliers with spreadsheets and email chains. Nothing syncs, nothing&rsquo;s current.</p>
+          <p class="shopify-card-solution">Centralized dashboard managing vendor relationships with real-time catalog health scoring, SKU assignment, private-label masking, and sync status. Tracks every vendor from initial scrape through storefront deployment.</p>
+        </div>
+
+        <!-- 3. AI Pattern Coordinator -->
+        <div class="shopify-card">
+          <div class="shopify-card-number">03</div>
+          <h3 class="shopify-card-title">AI Pattern Coordinator</h3>
+          <p class="shopify-card-problem">Creating coordinating collections takes a designer days &mdash; matching colors, testing combinations manually.</p>
+          <p class="shopify-card-solution">Feed it one swatch image. AI extracts the color palette and generates coordinating plaids, stripes, and complementary textures. SVG rendering, real-time preview, direct Shopify upload as companion products.</p>
+        </div>
+
+        <!-- 4. Executive Dashboard Suite -->
+        <div class="shopify-card">
+          <div class="shopify-card-number">04</div>
+          <h3 class="shopify-card-title">Executive Dashboard Suite</h3>
+          <p class="shopify-card-problem">No visibility into what your autonomous systems are doing. Reports are manual, meetings are uninformed.</p>
+          <p class="shopify-card-solution">Five role-based dashboards (CEO, CFO, COO, CTO, VP-Ops) with AI personas using live business data. Real-time agent health, task tracking, meeting agendas, and inter-executive messaging &mdash; all automated.</p>
+        </div>
+
+        <!-- 5. Room Visualization Engine -->
+        <div class="shopify-card">
+          <div class="shopify-card-number">05</div>
+          <h3 class="shopify-card-title">Room Visualization Engine</h3>
+          <p class="shopify-card-problem">Customers can&rsquo;t imagine how materials look installed. Returns are high, conversion is low.</p>
+          <p class="shopify-card-solution">AI-generated photorealistic room settings &mdash; bedrooms, living rooms, offices, bathrooms. Multiple viewing distances, proper perspective and pattern scaling. Batch processes thousands of products automatically.</p>
+        </div>
+
+        <!-- 6. Infrastructure Monitor -->
+        <div class="shopify-card">
+          <div class="shopify-card-number">06</div>
+          <h3 class="shopify-card-title">Real-Time System Monitor</h3>
+          <p class="shopify-card-problem">Agents crash silently, scrapers stall, nobody notices until customers complain about stale data.</p>
+          <p class="shopify-card-solution">Matrix-style monitoring dashboard tracking every process, database, and API probe in real time. Auto-detects crashes, resource spikes, and degraded services. 30-second health cycles, live event streaming.</p>
+        </div>
+      </div>
+
+      <div class="shopify-cta-row">
+        <a href="#inquiry" class="shopify-cta-btn">Bring These to Your Business &rarr;</a>
+        <p class="shopify-cta-note">Available for licensing, customization, or turnkey deployment for home furnishings brands.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- CREDIBILITY -->
   <section class="credibility" id="platforms">
     <div class="container">
@@ -2085,84 +1809,84 @@
 
       <div class="services-grid">
         <!-- Sprint -->
-        <div class="service-card light">
+        <div class="service-card">
           <p class="service-type">SPRINT (1-2 WEEKS)</p>
           <h3 class="service-title">Rapid Build</h3>
           <p class="service-subtitle">Fast turnaround on focused deliverables</p>
           <ul class="service-list">
             <li>
-              <span class="check-icon green"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
+              <span class="check-icon"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
               Landing pages & marketing sites
             </li>
             <li>
-              <span class="check-icon green"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
+              <span class="check-icon"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
               Shopify store setup & customization
             </li>
             <li>
-              <span class="check-icon green"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
+              <span class="check-icon"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
               API integrations & webhooks
             </li>
             <li>
-              <span class="check-icon green"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
+              <span class="check-icon"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
               Bug fixes & performance tuning
             </li>
           </ul>
         </div>
 
         <!-- Full Build (Popular) -->
-        <div class="service-card dark">
+        <div class="service-card">
           <span class="service-badge">POPULAR</span>
           <p class="service-type">FULL BUILD (4-8 WEEKS)</p>
           <h3 class="service-title">Complete Product</h3>
           <p class="service-subtitle">End-to-end application development</p>
           <ul class="service-list">
             <li>
-              <span class="check-icon brass"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
+              <span class="check-icon"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
               Full-stack web applications
             </li>
             <li>
-              <span class="check-icon brass"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
+              <span class="check-icon"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
               Database architecture & API design
             </li>
             <li>
-              <span class="check-icon brass"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
+              <span class="check-icon"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
               Production deployment & DevOps
             </li>
             <li>
-              <span class="check-icon brass"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
+              <span class="check-icon"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
               3D / WebGL interactive experiences
             </li>
             <li>
-              <span class="check-icon brass"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
+              <span class="check-icon"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
               30 days post-launch support
             </li>
           </ul>
         </div>
 
         <!-- AI + Automation -->
-        <div class="service-card black">
-          <p class="service-type" style="color: var(--terracotta);">AI + AUTOMATION (ONGOING)</p>
+        <div class="service-card">
+          <p class="service-type">AI + AUTOMATION (ONGOING)</p>
           <h3 class="service-title">AI Systems</h3>
           <p class="service-subtitle">Intelligent automation that scales</p>
           <ul class="service-list">
             <li>
-              <span class="check-icon terra"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
+              <span class="check-icon"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
               Claude / LLM agent development
             </li>
             <li>
-              <span class="check-icon terra"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
+              <span class="check-icon"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
               MCP server architecture
             </li>
             <li>
-              <span class="check-icon terra"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
+              <span class="check-icon"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
               Web scraping & data pipelines
             </li>
             <li>
-              <span class="check-icon terra"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
+              <span class="check-icon"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
               Workflow automation & orchestration
             </li>
             <li>
-              <span class="check-icon terra"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
+              <span class="check-icon"><svg class="check-svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></span>
               AI cost optimization & monitoring
             </li>
           </ul>
@@ -2295,7 +2019,7 @@
     </div>
   </footer>
 
-  <!-- Mobile nav toggle styles (injected via script to avoid is:global issues) -->
+  <!-- Mobile nav toggle styles -->
   <style>
     .nav-links.mobile-open {
       display: flex !important;
@@ -2304,12 +2028,12 @@
       top: 64px;
       left: 0;
       right: 0;
-      background: rgba(245, 240, 235, 0.98);
+      background: rgba(10, 10, 10, 0.98);
       backdrop-filter: blur(12px);
       padding: 24px;
       gap: 16px;
-      border-bottom: 1px solid rgba(201, 169, 110, 0.15);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      border-bottom: 1px solid var(--card-border);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
     }
 
     @media (min-width: 769px) {
@@ -2350,27 +2074,27 @@
     const directional = new THREE.DirectionalLight(0xfff5e6, 0.8);
     directional.position.set(3, 5, 4);
     scene.add(directional);
-    const pointLight = new THREE.PointLight(0xC9A96E, 0.4, 10);
+    const pointLight = new THREE.PointLight(0xE85D26, 0.4, 10);
     pointLight.position.set(-2, 3, 2);
     scene.add(pointLight);
 
-    // Color palette — interior design focused
+    // Color palette — tangerine-focused
     const palette = [
-      { hex: 0xD4613A, name: 'Terracotta' },
-      { hex: 0xC9A96E, name: 'Antique Brass' },
-      { hex: 0x2C3E2D, name: 'Forest Green' },
-      { hex: 0x6B6560, name: 'Warm Stone' },
-      { hex: 0x8B4513, name: 'Saddle Brown' },
-      { hex: 0xDEB887, name: 'Burlywood' },
-      { hex: 0x4A5D4F, name: 'Sage' },
-      { hex: 0xB8860B, name: 'Dark Goldenrod' },
-      { hex: 0xA0522D, name: 'Sienna' },
-      { hex: 0x556B2F, name: 'Dark Olive' },
-      { hex: 0xBC8F8F, name: 'Rosy Brown' },
-      { hex: 0x8FBC8F, name: 'Sea Green' },
+      { hex: 0xE85D26, name: 'Tangerine' },
+      { hex: 0xFF7A45, name: 'Coral' },
+      { hex: 0xCC4B1A, name: 'Burnt Orange' },
+      { hex: 0x777777, name: 'Steel' },
+      { hex: 0x999999, name: 'Silver' },
+      { hex: 0xF08C5A, name: 'Apricot' },
+      { hex: 0x555555, name: 'Charcoal' },
+      { hex: 0xD96B3A, name: 'Amber' },
+      { hex: 0xBB4411, name: 'Rust' },
+      { hex: 0x888888, name: 'Smoke' },
+      { hex: 0xE8794D, name: 'Peach' },
+      { hex: 0x666666, name: 'Graphite' },
     ];
 
-    // Build 3D color wheel — torus of floating paint swatches
+    // Build 3D color wheel
     const group = new THREE.Group();
     const swatchGeom = new THREE.BoxGeometry(0.35, 0.5, 0.08);
 
@@ -2395,7 +2119,7 @@
 
     // Central hub ring
     const ringGeom = new THREE.TorusGeometry(0.6, 0.04, 8, 48);
-    const ringMat = new THREE.MeshPhongMaterial({ color: 0xC9A96E, shininess: 80, transparent: true, opacity: 0.6 });
+    const ringMat = new THREE.MeshPhongMaterial({ color: 0xE85D26, shininess: 80, transparent: true, opacity: 0.6 });
     const ring = new THREE.Mesh(ringGeom, ringMat);
     ring.rotation.x = Math.PI / 2;
     group.add(ring);
@@ -2408,7 +2132,7 @@
     ring2.position.y = 0.1;
     group.add(ring2);
 
-    // Connecting lines from center to each swatch
+    // Connecting lines
     palette.forEach((c, i) => {
       const angle = (i / palette.length) * Math.PI * 2;
       const points = [
@@ -2416,7 +2140,7 @@
         new THREE.Vector3(Math.cos(angle) * 1.5, Math.sin(angle * 0.5) * 0.25, Math.sin(angle) * 1.5)
       ];
       const lineGeom = new THREE.BufferGeometry().setFromPoints(points);
-      const lineMat = new THREE.LineBasicMaterial({ color: 0xC9A96E, transparent: true, opacity: 0.15 });
+      const lineMat = new THREE.LineBasicMaterial({ color: 0xE85D26, transparent: true, opacity: 0.15 });
       group.add(new THREE.Line(lineGeom, lineMat));
     });
 
@@ -2430,7 +2154,7 @@
       positions[i * 3 + 2] = (Math.random() - 0.5) * 6;
     }
     particleGeom.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    const particleMat = new THREE.PointsMaterial({ color: 0xC9A96E, size: 0.03, transparent: true, opacity: 0.4 });
+    const particleMat = new THREE.PointsMaterial({ color: 0xE85D26, size: 0.03, transparent: true, opacity: 0.4 });
     group.add(new THREE.Points(particleGeom, particleMat));
 
     scene.add(group);
@@ -2462,12 +2186,10 @@
       requestAnimationFrame(animate);
       const time = Date.now() * 0.001;
 
-      // Slow auto-rotation + mouse influence
       group.rotation.y += 0.003;
       group.rotation.y += (targetRotY - group.rotation.y * 0.1) * 0.02;
       group.rotation.x += (targetRotX * 0.3 - group.rotation.x) * 0.05;
 
-      // Gentle float on swatches
       group.children.forEach((child, i) => {
         if (child.isMesh && child.userData.baseAngle !== undefined) {
           child.position.y = Math.sin(time + child.userData.baseAngle) * 0.15;
@@ -2475,7 +2197,6 @@
         }
       });
 
-      // Pulse rings
       ring.scale.setScalar(1 + Math.sin(time * 1.5) * 0.03);
 
       renderer.render(scene, camera);
